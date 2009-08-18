@@ -30,32 +30,36 @@
 			
 			//these are all checkboxes (except the last text input) that needs to be converted to a string before we can insert them into the database field
 			$toolsCB = array(
-							$_POST['photoshop'],
-							$_POST['flash'],
-							$_POST['illustrator'],
-							$_POST['dreamweaver'],
-							$_POST['fireworks'],
-							$_POST['coda'],
-							$_POST['textmate'],
-							$_POST['jquery'],
-							$_POST['otherTools'] //hey this is an input
+							'Photoshop'			=>	$_POST['photoshop'],
+							'Flash'				=>	$_POST['flash'],
+							'Illustrator'		=>	$_POST['illustrator'],
+							'Dreamweaver'		=>	$_POST['dreamweaver'],
+							'Fireworks'			=>	$_POST['fireworks'],
+							'Coda'				=>	$_POST['coda'],
+							'Text Mate'			=>	$_POST['textmate'],
+							'jQuery'			=>	$_POST['jquery'],
+							'Other Tools'		=>	$_POST['otherTools'] //hey this is an input
 							);	
 			
 			//these are all checkboxes (except the last text input) that needs to be converted to a string before we can insert them into the database field
 			$languagesCB = array(
-							$_POST['html'],
-							$_POST['css'],
-							$_POST['xml'],
-							$_POST['javascript'],
-							$_POST['php'],
-							$_POST['actionscript'],
-							$_POST['otherLanguages'] //hey this is an input
+							'HTML'				=>	$_POST['html'],
+							'CSS'				=>	$_POST['css'],
+							'XML'				=>	$_POST['xml'],
+							'JavaScript'		=>	$_POST['javascript'],
+							'PHP'				=>	$_POST['php'],
+							'ActionScript'		=>	$_POST['actionscript'],
+							'Other Languages'	=>	$_POST['otherLanguages'] //hey this is an input
 							);				
 			
 			$this->projects_model = new ProjectsModel( );
-			$valid = $this->projects_model->validate( $txtInput, $toolsCB, $languagesCB );
+			$valid = $this->projects_model->validate( $txtInput );
+			$toolString = $this->projects_model->handleCBs( $toolsCB );
+			$languageString = $this->projects_model->handleCBs( $languagesCB );
 			
 			var_dump($valid);
+			var_dump($toolString);
+			var_dump($languageString);
 
 			//Set View username_error if not valid inputs
 			/*if ( !$valid ) {
