@@ -18,6 +18,7 @@
 		{
 			$this->projects_model = new ProjectsModel( );
 			$valid = $this->projects_model->validate( );
+			
 
 			//Set View username_error if not valid inputs
 			if ( !$valid ) {

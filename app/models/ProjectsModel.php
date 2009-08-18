@@ -31,6 +31,7 @@
 		{
 			$return_array = array( );
 			
+			
 			foreach ( $arguments as $arg ) {
 				if( isset( $arg ) && $arg != "" && $arg != " " ) {
 					//push error on to array
