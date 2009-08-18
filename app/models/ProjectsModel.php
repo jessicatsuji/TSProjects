@@ -27,7 +27,7 @@
 			return $db->fetchAssoc($select);
 		}
 		
-		function validate( $txtInput, $toolsCB, $languagesCB )
+		function validate( $txtInput )
 		{
 			$return_array = array( );
 					
@@ -36,7 +36,7 @@
 			//Validator messages
 			$validator->setMessages( array(
 				Zend_Validate_StringLength::TOO_SHORT =>
-					'The string value, \'%value%\' is too short',
+					'The string value, \' %value% \' is too short',
 				Zend_Validate_StringLength::TOO_LONG =>
 					'You entered \' %max% \' characters, which is over 250.'
 			));
@@ -45,12 +45,24 @@
 			foreach($txtInput as $key => $txtIn){
 				if(!$validator->isValid($txtIn)) {
 					$error = $validator->getMessages();
-					$errorMessage =  $key . ': '. $error;
+					foreach ($error as $e) {
+						$errorMessage =  $key . ': '. $e;
+					}
 					array_push($return_array,  $errorMessage);
 				}
 			}
 			
 			return $return_array;
+		}
+		
+		function handleCBs( $cbValues ) {
+			$return_string;
+			
+			foreach ($cbVAlues as $key => $cb) {
+				$return_string .= isset($cb) ? $key . ", " : NULL;
+			}
+			
+			return $return_string;
 		}
 		
 		function create()
