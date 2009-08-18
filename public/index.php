@@ -37,7 +37,7 @@ $config = new Zend_Config(
 			'adapter' => 'Mysqli',
 			'params' => array(
 				'host' => 'localhost',
-				'dbname' => 'dbname',
+				'dbname' => 'tsProjects',
 				'username' => 'root',
 				'password' => 'root',
 			)
