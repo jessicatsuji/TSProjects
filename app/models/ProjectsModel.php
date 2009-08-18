@@ -30,6 +30,21 @@
 		function validate($arguments)
 		{
 			$return_array = array( );
+					
+			$validator = new Zend_Validate_StringLength(3, 250)
+			
+			//Validator messages
+			$validator->setMessages( array(
+				Zend_Validate_StringLength::TOO_SHORT =>
+					'Not long enough description',
+				Zend_Validate_StringLength::TOO_LONG =>
+					'You entered \' %max% \' characters, which is over 250'
+			));
+			
+			foreach($txtInput as $txtIn){
+				if(!$validator->isValid($textIn))
+			}
+
 			
 			
 			foreach ( $arguments as $arg ) {

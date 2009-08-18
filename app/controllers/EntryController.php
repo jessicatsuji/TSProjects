@@ -16,9 +16,47 @@
 		
 		public function createAction( )
 		{
-			$this->projects_model = new ProjectsModel( );
-			$valid = $this->projects_model->validate( );
+		
+			//these are all text inputs
+			$txtInput = array(
+							$_POST['title'],
+							$_POST['url'],
+							$_POST['authors'],
+							$_POST['courses'],
+							$_POST['date_complete'],
+							$_POST['assign_spec'],
+							$_POST['project_approach']
+							);
 			
+			//these are all checkboxes (except the last text input) that needs to be converted to a string before we can insert them into the database field
+			$toolsCB = array(
+							$_POST['photoshop'],
+							$_POST['flash'],
+							$_POST['illustrator'],
+							$_POST['dreamweaver'],
+							$_POST['fireworks'],
+							$_POST['coda'],
+							$_POST['textmate'],
+							$_POST['jquery'],
+							$_POST['otherTools'] //hey this is an input
+							);	
+			
+			//these are all checkboxes (except the last text input) that needs to be converted to a string before we can insert them into the database field
+			$languagesCB = array(
+							$_POST['html'],
+							$_POST['css'],
+							$_POST['xml'],
+							$_POST['javascript'],
+							$_POST['php'],
+							$_POST['actionscript'],
+							$_POST['otherLanguages'] //hey this is an input
+							);				
+			
+			$this->projects_model = new ProjectsModel( );
+			
+
+			$valid = $this->projects_model->validate( $txtInput, $toolsCB, $languagesCB );
+
 
 			//Set View username_error if not valid inputs
 			if ( !$valid ) {
