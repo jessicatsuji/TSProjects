@@ -41,15 +41,35 @@
 			return $return_array;
 		}
 		
-		function create($arguments)
+		function create()
 		{
 			//Connect to database
 			$db = $this->getDefaultAdapter();
+			
+			//Test insert
+			$arguments = array(
+							'myURL.com',
+							'author1',
+							'title is awesome',
+							'tools',
+							'courses',
+							'languages',
+							'May 2, 2009',
+							'assignment specification',
+							'project approach'
+						);
 		
 			//Set arguments to Zend insert associative array
 			$insertArgs = array(
-				'first_name'        => $arguments[0],
-				'last_name'         => $arguments[1],
+				'url'        		=> $arguments[0],
+				'authors'         	=> $arguments[1],
+				'title'        		=> $arguments[2],
+				'tools'         	=> $arguments[3],
+				'courses'         	=> $arguments[4],
+				'languages'         => $arguments[5],
+				'date_complete'     => $arguments[6],
+				'assign_spec'       => $arguments[7],
+				'project_approach'  => $arguments[8],
 				);
 		
 			//Insert into table
