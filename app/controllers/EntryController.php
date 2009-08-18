@@ -19,13 +19,13 @@
 		
 			//these are all text inputs
 			$txtInput = array(
-							$_POST['title'],
-							$_POST['url'],
-							$_POST['authors'],
-							$_POST['courses'],
-							$_POST['date_complete'],
-							$_POST['assign_spec'],
-							$_POST['project_approach']
+							'Title Input'				=>	$_POST['title'],
+							'Url Input'					=>	$_POST['url'],
+							'Authors Input'				=>	$_POST['authors'],
+							'Courses Input'				=>	$_POST['courses'],
+							'Date Complete Input'		=>	$_POST['date_complete'],
+							'Assignemnt Input'			=>	$_POST['assign_spec'],
+							'Project Approach Input'	=>	$_POST['project_approach']
 							);
 			
 			//these are all checkboxes (except the last text input) that needs to be converted to a string before we can insert them into the database field
@@ -54,9 +54,11 @@
 			
 			$this->projects_model = new ProjectsModel( );
 			$valid = $this->projects_model->validate( $txtInput, $toolsCB, $languagesCB );
+			
+			var_dump($valid);
 
 			//Set View username_error if not valid inputs
-			if ( !$valid ) {
+			/*if ( !$valid ) {
 				$this->session->username_error = $valid;
 				
 				//Redirect Entry
@@ -74,7 +76,7 @@
 				
 				//Redirect Upload
 				header( 'Location: /upload' );
-			}
+			}*/
 		}
 		
 	}

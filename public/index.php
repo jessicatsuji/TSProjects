@@ -22,6 +22,7 @@ Zend_Loader::loadClass('Zend_View');
 Zend_Loader::loadClass('Zend_Session');
 Zend_Loader::loadClass('Zend_Session_Namespace');
 Zend_Loader::loadClass('Zend_Layout');
+Zend_Loader::loadClass('Zend_Validate_StringLength');
 
 //StartMVC
 $mvc_options = array(
