@@ -56,32 +56,26 @@
 		}
 		
 		function handleCBs( $cbValues ) {
-			$return_string;
+			$return_string = "";
 			
-			foreach ($cbVAlues as $key => $cb) {
-				$return_string .= isset($cb) ? $key . ", " : NULL;
+			foreach ($cbValues as $cb) {
+				if(isset($_POST[$cb])) {
+					if($cb == 'otherTools' || $cb == 'otherLanguages') {
+						$return_string .= $_POST[$cb] . ", ";
+					} else {
+						$return_string .= $cb . ", ";
+					}
+				}
 			}
 			
 			return $return_string;
 		}
 		
-		function create()
+		function create($arguments)
 		{
 			//Connect to database
 			$db = $this->getDefaultAdapter();
 			
-			//Test insert
-			$arguments = array(
-							'myURL.com',
-							'author1',
-							'title is awesome',
-							'tools',
-							'courses',
-							'languages',
-							'May 2, 2009',
-							'assignment specification',
-							'project approach'
-						);
 		
 			//Set arguments to Zend insert associative array
 			$insertArgs = array(

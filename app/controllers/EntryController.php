@@ -16,50 +16,53 @@
 		
 		public function createAction( )
 		{
-		
-			//these are all text inputs
-			$txtInput = array(
-							'Title Input'				=>	$_POST['title'],
-							'Url Input'					=>	$_POST['url'],
-							'Authors Input'				=>	$_POST['authors'],
-							'Courses Input'				=>	$_POST['courses'],
-							'Date Complete Input'		=>	$_POST['date_complete'],
-							'Assignemnt Input'			=>	$_POST['assign_spec'],
-							'Project Approach Input'	=>	$_POST['project_approach']
-							);
-			
+
 			//these are all checkboxes (except the last text input) that needs to be converted to a string before we can insert them into the database field
 			$toolsCB = array(
-							'Photoshop'			=>	$_POST['photoshop'],
-							'Flash'				=>	$_POST['flash'],
-							'Illustrator'		=>	$_POST['illustrator'],
-							'Dreamweaver'		=>	$_POST['dreamweaver'],
-							'Fireworks'			=>	$_POST['fireworks'],
-							'Coda'				=>	$_POST['coda'],
-							'Text Mate'			=>	$_POST['textmate'],
-							'jQuery'			=>	$_POST['jquery'],
-							'Other Tools'		=>	$_POST['otherTools'] //hey this is an input
+							'photoshop',	
+							'flash',	
+							'illustrator',	
+							'dreamweaver',	
+							'fireworks',	
+							'coda',	
+							'textmate',		
+							'jquery',	
+							'otherTools'
 							);	
+			
 			
 			//these are all checkboxes (except the last text input) that needs to be converted to a string before we can insert them into the database field
 			$languagesCB = array(
-							'HTML'				=>	$_POST['html'],
-							'CSS'				=>	$_POST['css'],
-							'XML'				=>	$_POST['xml'],
-							'JavaScript'		=>	$_POST['javascript'],
-							'PHP'				=>	$_POST['php'],
-							'ActionScript'		=>	$_POST['actionscript'],
-							'Other Languages'	=>	$_POST['otherLanguages'] //hey this is an input
-							);				
-			
+							'html'			,
+							'css'			,
+							'xml'			,
+							'javascript'	,
+							'php'			,
+							'actionscript'	,
+							'otherLanguages',
+							);	
+							
+			 
 			$this->projects_model = new ProjectsModel( );
-			$valid = $this->projects_model->validate( $txtInput );
+			//$valid = $this->projects_model->validate( $txtInput );
 			$toolString = $this->projects_model->handleCBs( $toolsCB );
 			$languageString = $this->projects_model->handleCBs( $languagesCB );
 			
-			var_dump($valid);
-			var_dump($toolString);
-			var_dump($languageString);
+			
+			//Test insert
+			$arguments = array(
+							$_POST['url'],
+							$_POST['authors'],
+							$_POST['title'],
+							$toolString,
+							$_POST['courses'],
+							$languageString,
+							$_POST['date_complete'],
+							$_POST['assign_spec'],
+							$_POST['project_approach']
+						);
+			
+			$this->projects_model->create( $arguments );
 
 			//Set View username_error if not valid inputs
 			/*if ( !$valid ) {
