@@ -16,50 +16,59 @@
 		
 		public function createAction( )
 		{
-		
-			//these are all text inputs
-			$txtInput = array(
-							$_POST['title'],
-							$_POST['url'],
-							$_POST['authors'],
-							$_POST['courses'],
-							$_POST['date_complete'],
-							$_POST['assign_spec'],
-							$_POST['project_approach']
-							);
-			
+
 			//these are all checkboxes (except the last text input) that needs to be converted to a string before we can insert them into the database field
 			$toolsCB = array(
-							$_POST['photoshop'],
-							$_POST['flash'],
-							$_POST['illustrator'],
-							$_POST['dreamweaver'],
-							$_POST['fireworks'],
-							$_POST['coda'],
-							$_POST['textmate'],
-							$_POST['jquery'],
-							$_POST['otherTools'] //hey this is an input
+							'photoshop',	
+							'flash',	
+							'illustrator',	
+							'dreamweaver',	
+							'fireworks',	
+							'coda',	
+							'textmate',		
+							'jquery',	
+							'otherTools'
 							);	
+			
 			
 			//these are all checkboxes (except the last text input) that needs to be converted to a string before we can insert them into the database field
 			$languagesCB = array(
-							$_POST['html'],
-							$_POST['css'],
-							$_POST['xml'],
-							$_POST['javascript'],
-							$_POST['php'],
-							$_POST['actionscript'],
-							$_POST['otherLanguages'] //hey this is an input
-							);				
-			
+							'html'			,
+							'css'			,
+							'xml'			,
+							'javascript'	,
+							'php'			,
+							'actionscript'	,
+							'otherLanguages',
+							);	
+							
+			 
 			$this->projects_model = new ProjectsModel( );
-			
 
-			$valid = $this->projects_model->validate( $txtInput, $toolsCB, $languagesCB );
+			//$valid = $this->projects_model->validate( $txtInput );
+			$toolString = $this->projects_model->handleCBs( $toolsCB );
+			$languageString = $this->projects_model->handleCBs( $languagesCB );
+			
+			
+			//Test insert
+			$arguments = array(
+							$_POST['url'],
+							$_POST['authors'],
+							$_POST['title'],
+							$toolString,
+							$_POST['courses'],
+							$languageString,
+							$_POST['date_complete'],
+							$_POST['assign_spec'],
+							$_POST['project_approach']
+						);
+			
+			$this->projects_model->create( $arguments );
+
 
 
 			//Set View username_error if not valid inputs
-			if ( !$valid ) {
+			/*if ( !$valid ) {
 				$this->session->username_error = $valid;
 				
 				//Redirect Entry
@@ -77,7 +86,7 @@
 				
 				//Redirect Upload
 				header( 'Location: /upload' );
-			}
+			}*/
 		}
 		
 	}

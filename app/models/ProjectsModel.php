@@ -27,52 +27,57 @@
 			return $db->fetchAssoc($select);
 		}
 		
-		function validate($arguments)
+		function validate( $txtInput )
 		{
 			$return_array = array( );
 					
-			$validator = new Zend_Validate_StringLength(3, 250)
+
+			$validator = new Zend_Validate_StringLength(3, 250);
+
 			
 			//Validator messages
 			$validator->setMessages( array(
 				Zend_Validate_StringLength::TOO_SHORT =>
-					'Not long enough description',
+					'The string value, \' %value% \' is too short',
 				Zend_Validate_StringLength::TOO_LONG =>
-					'You entered \' %max% \' characters, which is over 250'
+					'You entered \' %max% \' characters, which is over 250.'
 			));
 			
-			foreach($txtInput as $txtIn){
-				if(!$validator->isValid($textIn))
-			}
-
-			
-			
-			foreach ( $arguments as $arg ) {
-				if( isset( $arg ) && $arg != "" && $arg != " " ) {
-					//push error on to array
+			// Looping through the text inputs
+			foreach($txtInput as $key => $txtIn){
+				if(!$validator->isValid($txtIn)) {
+					$error = $validator->getMessages();
+					foreach ($error as $e) {
+						$errorMessage =  $key . ': '. $e;
+					}
+					array_push($return_array,  $errorMessage);
 				}
 			}
 			
 			return $return_array;
 		}
 		
-		function create()
+		function handleCBs( $cbValues ) {
+			$return_string = "";
+			
+			foreach ($cbValues as $cb) {
+				if(isset($_POST[$cb])) {
+					if($cb == 'otherTools' || $cb == 'otherLanguages') {
+						$return_string .= $_POST[$cb] . ", ";
+					} else {
+						$return_string .= $cb . ", ";
+					}
+				}
+			}
+			
+			return $return_string;
+		}
+		
+		function create($arguments)
 		{
 			//Connect to database
 			$db = $this->getDefaultAdapter();
 			
-			//Test insert
-			$arguments = array(
-							'myURL.com',
-							'author1',
-							'title is awesome',
-							'tools',
-							'courses',
-							'languages',
-							'May 2, 2009',
-							'assignment specification',
-							'project approach'
-						);
 		
 			//Set arguments to Zend insert associative array
 			$insertArgs = array(
