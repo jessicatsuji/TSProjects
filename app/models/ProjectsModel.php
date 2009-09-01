@@ -58,19 +58,16 @@
 		}
 		
 		function handleCBs( $cbValues ) {
-			$return_string = "";
+			$return_array = array();
 			
 			foreach ($cbValues as $cb) {
-				if(isset($_POST[$cb])) {
-					if($cb == 'otherTools' || $cb == 'otherLanguages') {
-						$return_string .= $_POST[$cb] . ", ";
-					} else {
-						$return_string .= $cb . ", ";
-					}
+				$type = strtolower($cb['type']);
+				if(isset($_POST[$type])) {
+					array_push($return_array,  $_POST[$type]);
 				}
 			}
 			
-			return $return_string;
+			return $return_array;
 		}
 		
 		function create($arguments)
@@ -81,19 +78,24 @@
 		
 			//Set arguments to Zend insert associative array
 			$insertArgs = array(
-				'url'        		=> $arguments[0],
-				'authors'         	=> $arguments[1],
-				'title'        		=> $arguments[2],
-				'tools'         	=> $arguments[3],
-				'courses'         	=> $arguments[4],
-				'languages'         => $arguments[5],
-				'date_complete'     => $arguments[6],
-				'assign_spec'       => $arguments[7],
-				'project_approach'  => $arguments[8],
+				'title'        		=> $_POST[ $arguments[0] ],
+				'url'        		=> $_POST[ $arguments[1] ],
+				'author_id'         => $arguments[2] 		  ,
+				'courses'         	=> $_POST[ $arguments[3] ],
+				'date_month'        => $_POST[ $arguments[4] ],
+				'date_day'         	=> $_POST[ $arguments[5] ],
+				'date_year'     	=> $_POST[ $arguments[6] ],
+				'assign_spec'       => $_POST[ $arguments[7] ],
+				'project_approach'  => $_POST[ $arguments[8] ],
+				'other_tools'  		=> $_POST[ $arguments[9] ],
+				'other_languages'  	=> $_POST[ $arguments[10] ],
 				);
 		
 			//Insert into table
-			return $db->insert($this->table, $insertArgs);
+			$db->insert($this->table, $insertArgs);
+
+			//return Id of last inserted row
+			return $db->lastInsertId();
 		}
 		
 		function updateOne($arguments)

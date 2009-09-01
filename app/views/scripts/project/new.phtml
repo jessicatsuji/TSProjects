@@ -1,15 +1,12 @@
 <h1>Ts Projects</h1>
-
+<?php var_dump($this->toolsChecked) ?>
 <div class="entryForm">
-    <form action="/entry/create" method="post">
+    <form action="/project/create" method="post">
     <label>title:</label>
     <input type="text" class="text" name="title" id="title"/>
     <br />
     <label>URL:</label>
     <input type="text" class="text" name="url" id="url"/>
-    <br />
-    <label>project authors:</label>
-    <input type="text" class="text" name="authors" id="authors" />
     <br /><br /><br />
     <label>class:</label>
     <input type="text" class="text" name="courses" id="courses" />
@@ -21,7 +18,7 @@
     
 <?php		foreach($this->tools as $tool) { ?>
 	<li>
-		<input type="checkbox" name="<?= strtolower($tool['type']) ?>" id="<?= strtolower($tool['type']) ?>" /> <?= $tool['type'] ?></li>
+		<input type="checkbox" name="<?= strtolower($tool['type']) ?>" id="<?= strtolower($tool['type']) ?>" value="<?= $tool['id'] ?>" /> <?= $tool['type'] ?></li>
 	</li>		
 <?php		}?>
     
@@ -33,7 +30,7 @@
     
 <?php		foreach($this->languages as $language) { ?>
 	<li>
-		<input type="checkbox" name="<?= strtolower($language['type']) ?>" id="<?= strtolower($language['type']) ?>" /> <?= $language['type'] ?></li>
+		<input type="checkbox" name="<?= strtolower($language['type']) ?>" id="<?= strtolower($language['type']) ?>" value="<?= $language['id'] ?>" /> <?= $language['type'] ?></li>
 	</li>		
 <?php		}?>
     
@@ -42,7 +39,35 @@
 </span>
     <br />
     <label>date:</label>
-    <input type="text" class="text" name="date_complete" id="date_complete"/>
+		<select name="date_month" id="date_month">
+			<option value="default_month">Month</option>
+			<option value="january">January</option>
+			<option value="february">February</option>
+			<option value="march">March</option>
+			<option value="april">April</option>
+			<option value="may">May</option>
+			<option value="june">June</option>
+			<option value="july">July</option>
+			<option value="august">August</option>
+			<option value="september">September</option>
+			<option value="october">October</option>
+			<option value="november">November</option>
+			<option value="december">December</option>
+		</select>
+		
+		<select name="date_day" id="date_day">
+			<option value="default_day">Day</option>
+			<?php for($i = 1; $i <= 31; $i++)
+				print '<option value="day">' . $i . '</option>'
+			 ?>
+		</select>
+		
+		<select name="date_year" id="date_year">
+			<option value="default_year">Year</option>
+			<?php for($k = 2000; $k <= 2030; $k++) 
+				print '<option value="year">' . $k . '</option>'
+			 ?>
+		</select>
     <br /><br /><br />
     <label>assignment specs:</label>
     <textarea rows="4" cols="60" name="assign_spec" id="assign_spec"></textarea>
