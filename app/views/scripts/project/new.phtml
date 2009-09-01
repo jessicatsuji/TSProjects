@@ -58,14 +58,14 @@
 		<select name="date_day" id="date_day">
 			<option value="default_day">Day</option>
 			<?php for($i = 1; $i <= 31; $i++)
-				print '<option value="day">' . $i . '</option>'
+				print '<option value="' . $i . '">' . $i . '</option>'
 			 ?>
 		</select>
 		
 		<select name="date_year" id="date_year">
 			<option value="default_year">Year</option>
 			<?php for($k = 2000; $k <= 2030; $k++) 
-				print '<option value="year">' . $k . '</option>'
+				print '<option value="' . $k . '">' . $k . '</option>'
 			 ?>
 		</select>
     <br /><br /><br />
