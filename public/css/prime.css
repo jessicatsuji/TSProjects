@@ -1,3 +1,5 @@
+/* PLEASE NOT THAT AT LINE 108 IS TESTING FOR LANDING PAGE COMMENT OUT IF NEEDED */
+
 * {
 margin:0 auto;
 padding:0;
@@ -102,3 +104,34 @@ border-radius: 3px;
 background:#4b4d45;
 color:#fff;
 }
+
+/************************** for testing of landing page **********************************/
+.landing-container {
+	border: solid 1px #ff0000;
+	width:1020px;
+	height: 768px;
+}
+
+.landing-project-container {
+	border: solid 1px #00ff00;
+	width: 200px;
+	height: 200px;
+	margin: 50px;
+	float: left;
+}
+
+.landing-project-container .landing-thumb {
+	border: solid 1px #0000ff;
+	width:100px;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+.landing-project-container h3 {
+	margin-top: 10px;
+	text-align: center;
+}
+
+/************************* end of testing for landing page ***************************/
