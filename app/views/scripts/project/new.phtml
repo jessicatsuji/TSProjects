@@ -1,0 +1,57 @@
+<h1>Ts Projects</h1>
+
+<div class="entryForm">
+    <form action="/entry/create" method="post">
+    <label>title:</label>
+    <input type="text" class="text" name="title" id="title"/>
+    <br />
+    <label>URL:</label>
+    <input type="text" class="text" name="url" id="url"/>
+    <br />
+    <label>project authors:</label>
+    <input type="text" class="text" name="authors" id="authors" />
+    <br /><br /><br />
+    <label>class:</label>
+    <input type="text" class="text" name="courses" id="courses" />
+    <br />
+
+<span class="contain-checkboxes">
+<ul class="tools">
+    <li><label>tools:</label></li>
+    
+<?php		foreach($this->tools as $tool) { ?>
+	<li>
+		<input type="checkbox" name="<?= strtolower($tool['type']) ?>" id="<?= strtolower($tool['type']) ?>" /> <?= $tool['type'] ?></li>
+	</li>		
+<?php		}?>
+    
+    <li><input type="text" class="other-box" name="otherTools" id="otherTools" value="other" title="other"/></li>
+</ul>
+
+<ul class="languages">
+    <li><label>languages:</label></li>
+    
+<?php		foreach($this->languages as $language) { ?>
+	<li>
+		<input type="checkbox" name="<?= strtolower($language['type']) ?>" id="<?= strtolower($language['type']) ?>" /> <?= $language['type'] ?></li>
+	</li>		
+<?php		}?>
+    
+    <li><input type="text" value="other" name="otherLanguages" id="otherLanguages" class="other-box" title="other"/></li>
+</ul>
+</span>
+    <br />
+    <label>date:</label>
+    <input type="text" class="text" name="date_complete" id="date_complete"/>
+    <br /><br /><br />
+    <label>assignment specs:</label>
+    <textarea rows="4" cols="60" name="assign_spec" id="assign_spec"></textarea>
+    <br />
+    <br />
+    <label>project approach:</label>
+    <textarea rows="4" cols="60" name="project_approach" id="project_approach"></textarea>
+    <br />
+    <br />
+    <input type="submit" value="submit" id="submit"/>
+    </form>
+</div>
