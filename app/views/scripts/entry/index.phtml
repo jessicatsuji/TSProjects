@@ -8,9 +8,6 @@
     <label>URL:</label>
     <input type="text" class="text" name="url" id="url"/>
     <br />
-    <label>project authors:</label>
-    <input type="text" class="text" name="authors" id="authors" />
-    <br /><br /><br />
     <label>class:</label>
     <input type="text" class="text" name="courses" id="courses" />
     <br />
@@ -42,7 +39,37 @@
 </span>
     <br />
     <label>date:</label>
-    <input type="text" class="text" name="date_complete" id="date_complete"/>
+    <form action="">
+		<select name="month">
+			<option value="default_month">Month</option>
+			<option value="january">January</option>
+			<option value="february">February</option>
+			<option value="march">March</option>
+			<option value="april">April</option>
+			<option value="may">May</option>
+			<option value="june">June</option>
+			<option value="july">July</option>
+			<option value="august">August</option>
+			<option value="september">September</option>
+			<option value="october">October</option>
+			<option value="november">November</option>
+			<option value="decemper">December</option>
+		</select>
+		
+		<select name="day">
+			<option value="default_day">Day</option>
+			<?php for($i = 1; $i <= 31; $i++)
+				print '<option value="day">' . $i . '</option>'
+			 ?>
+		</select>
+		
+		<select name="year">
+			<option value="default_year">Year</option>
+			<?php for($k = 2000; $k <= 2030; $k++) 
+				print '<option value="year">' . $k . '</option>'
+			 ?>
+		</select>
+	</form>
     <br /><br /><br />
     <label>assignment specs:</label>
     <textarea rows="4" cols="60" name="assign_spec" id="assign_spec"></textarea>
