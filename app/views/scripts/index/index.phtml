@@ -1,24 +1,45 @@
+<div id="landing" class="container">
+<?php 
+/**
+* Landing Page
+* this will grab the newest 6 projects and display the for all the world to see
+*/
+?>
 <h1>Hello! You've reached TSProject, the Project Admin for the Art Institute's WDIM Department's Touch Screen Display.</h1>
 <p>What would you like to do? </p>
 
-<a href="/account/new">Create A New Account.</a>
+<div class="login">
+	<a href="/account/new">Create A New Account.</a>
 
-<?php if($this->user_id != "") { ?>
+	<?php if($this->user_id != "") { ?>
 
-<a href="/account/logout">Logout</a>
+	<a href="/account/logout">Logout</a>
 
-<?php 		echo "User Id: " . $this->user_id; 
-		} else { ?>
+	<?php 		echo "User Id: " . $this->user_id; 
+			} else { ?>
 
-<form action="/account/login" method="post">
-	<label>Email</label>
-	<input name="email"id="email" type="text" />
-	<br />
+	<form action="/account/login" method="post">
+		<label>Email</label>
+		<input name="email"id="email" type="text" />
+		<br />
 	
-	<label>Password</label>
-	<input name="pass"id="pass" type="text" />
+		<label>Password</label>
+		<input name="pass"id="pass" type="text" />
 	
-    <input type="submit" value="submit" id="submit"/>
-</form>
-		
-<?php 	} ?>
+	    <input type="submit" value="submit" id="submit"/>
+	</form>
+</div>		
+<?php 	}
+
+for($m = 0; $m <= 5; $m++){
+
+echo '<div class="project">';
+	echo '<div class="thumb">';
+		echo 'Insert Thumbnail Photo Here';
+	echo '</div>';
+	echo '<h3> Insert Project Title here </h3>';
+echo '</div>';
+}
+
+?>
+</div>

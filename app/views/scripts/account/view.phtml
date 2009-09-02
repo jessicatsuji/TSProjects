@@ -1,14 +1,14 @@
-<div class="landing-container">
+<div class="container">
 <?php 
 /**
-* Landing Page
-* this will grab the newest 6 projects and display the for all the world to see
+* User's Dashboard of their own projects
+* this will grab their newest 6 projects and display the for all the world to see
 */
 ?>
 <h1>Hello! You've reached TSProject, the Project Admin for the Art Institute's WDIM Department's Touch Screen Display.</h1>
 <p>What would you like to do? </p>
 
-<div class="landing-login">
+<div class="login">
 	<a href="/account/new">Create A New Account.</a>
 
 	<?php if($this->user_id != "") { ?>
@@ -33,8 +33,8 @@
 
 for($m = 0; $m <= 5; $m++){
 
-echo '<div class="landing-project-container">';
-	echo '<div class="landing-thumb">';
+echo '<div class="project">';
+	echo '<div class="landing">';
 		echo 'Insert Thumbnail Photo Here';
 	echo '</div>';
 	echo '<h3> Insert Project Title here </h3>';
