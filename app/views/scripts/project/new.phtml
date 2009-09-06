@@ -1,5 +1,5 @@
 <h1>Ts Projects</h1>
-<?php var_dump($this->toolsChecked) ?>
+
 <div class="entryForm">
     <form action="/project/create" method="post">
     <label>title:</label>
@@ -18,7 +18,7 @@
     
 <?php		foreach($this->tools as $tool) { ?>
 	<li>
-		<input type="checkbox" name="<?= strtolower($tool['type']) ?>" id="<?= strtolower($tool['type']) ?>" value="<?= $tool['id'] ?>" /> <?= $tool['type'] ?></li>
+		<input type="checkbox" name="<?= strtolower($tool['type']) ?>" id="<?= strtolower($tool['type']) ?>" value="<?= $tool['id'] ?>" /> <?= $tool['type'] ?>
 	</li>		
 <?php		}?>
     
@@ -30,7 +30,7 @@
     
 <?php		foreach($this->languages as $language) { ?>
 	<li>
-		<input type="checkbox" name="<?= strtolower($language['type']) ?>" id="<?= strtolower($language['type']) ?>" value="<?= $language['id'] ?>" /> <?= $language['type'] ?></li>
+		<input type="checkbox" name="<?= strtolower($language['type']) ?>" id="<?= strtolower($language['type']) ?>" value="<?= $language['id'] ?>" /> <?= $language['type'] ?>
 	</li>		
 <?php		}?>
     

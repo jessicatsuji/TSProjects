@@ -136,11 +136,91 @@
 		public function editAction()
 		{
 		
+			//Verify Exists
+			$project_id = $this->_request->getParam('id');
+			$project_helper = $this->_helper->Projects;
+			if( !$project_helper->isOwner( $this->session->user_id, $project_id, $this->projects_model ) ) {
+				header("Location: /error/error");
+			} else {
+				$this->view->id = $project_id;
+				
+				$this->project['info'] = $this->projects_model->getOne( array( $project_id ));
+				
+				$this->project['author'] = $this->users_model->getOne( array( $this->project['info']['author_id'] ) );
+				
+				//$this->project['images'] = $this->image_model->getAll($project_id);
+
+				$projTools = $this->project_tools_model->getOneByProject( array( $project_id ) );
+				$this->project['tools'] = array();
+				foreach ( $projTools as $tool ) {
+					$toolArray = $this->tools_model->getOne( array( $tool['tools_id'] ) );
+					array_push( $this->project['tools'], $toolArray['type'] );
+				}
+
+				
+				$projLanguages = $this->project_languages_model->getOneByProject( array( $project_id ) );
+				$this->project['languages'] = array();
+				foreach ( $projLanguages as $language ) {
+					$languageArray = $this->languages_model->getOne( array( $language['language_id'] ) );
+					array_push( $this->project['languages'], $languageArray['type'] );
+				}
+				
+				
+				$this->view->tools = $this->tools;
+				$this->view->languages = $this->languages;
+	
+				$this->view->project = $this->project;
+			}
 		}
 		
 		public function updateAction()
 		{
-		
+			$project_id = $this->_request->getParam('id');
+			
+			$this->inputs = array(
+									'title'        			,
+									'url'        			,
+									$this->session->user_id	,
+									'courses'         		,
+									'date_month'        	,
+									'date_day'         		,
+									'date_year'     		,
+									'assign_spec'       	,
+									'project_approach'  	,
+									'otherTools'  			,
+									'otherLanguages'  		,
+									$project_id  		
+								);
+			
+			//validate
+			/* if (valid) {
+				$this->projects_model->create($arguments);
+				$toolChecked = $this->projects_model->handleCBs( $this->tools );
+				$this->project_tools_model->insert(foreach $toolChecked as $tool);
+				$toolChecked = $this->projects_model->handleCBs( $this->languages );
+				$this->project_tools_model->insert(foreach $toolChecked as $language);
+			} else {
+				redirect to /project/new
+			}*/
+			
+			$proj = $this->projects_model->updateOne( $this->inputs );
+			
+			$toolsChecked = $this->projects_model->handleCBs( $this->tools );
+			$languagesChecked = $this->projects_model->handleCBs( $this->languages );
+			
+			
+			$this->project_tools_model->deleteAll( array($project_id));
+			$this->project_languages_model->deleteAll( array($project_id));
+			
+			foreach( $toolsChecked as $tool ) {
+				$this->project_tools_model->addOne( array($tool, $project_id));
+			}
+			
+			foreach( $languagesChecked as $language ) {
+				$this->project_languages_model->addOne( array($language, $project_id));
+			}
+			
+			header("Location: /project/view/id/$project_id");
 		}
 		
 		public function reuploadAction()

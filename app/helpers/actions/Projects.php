@@ -8,7 +8,7 @@
 		
 		function isOwner($user_id, $project_id, $project_model)
 		{
-			return $project_model->isOwner($user_id, $project_id);
+			return $project_model->isOwner( array( $user_id, $project_id ) );
 		}
 	}
 ?>

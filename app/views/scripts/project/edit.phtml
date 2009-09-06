@@ -1,0 +1,89 @@
+<h1>You are editing Project: <?=stripslashes( $this->project['info']['title'] )?>?</h1>
+
+<div class="entryForm">
+    <form action="/project/update/id/<?= $this->project['info']['id'] ?>" method="post">
+    <label>title:</label>
+    <input type="text" class="text" name="title" id="title" value="<?=stripslashes( $this->project['info']['title'] )?>" />
+    <br />
+    <label>URL:</label>
+    <input type="text" class="text" name="url" id="url" value="<?=stripslashes( $this->project['info']['url'] )?>" />
+    <br /><br /><br />
+    <label>class:</label>
+    <input type="text" class="text" name="courses" id="courses" value="<?=stripslashes( $this->project['info']['courses'] )?>" />
+    <br />
+
+<span class="contain-checkboxes">
+<ul class="tools">
+    <li><label>tools:</label></li>
+    
+<?php		foreach($this->tools as $tool) { ?>
+	<li>
+		<input type="checkbox" name="<?= strtolower($tool['type']) ?>" id="<?= strtolower($tool['type']) ?>" value="<?= $tool['id'] ?>"<?php 
+				foreach( $this->project['tools'] as $projTool ) {
+					echo ( $projTool == $tool['type'] ) ? ' checked="checked"' : "";
+				}?> /> <?= $tool['type'] ?>
+	</li>		
+<?php		}?>
+    
+    <li><input type="text" class="other-box" name="otherTools" id="otherTools" value="<?=stripslashes( $this->project['info']['other_tools'] )?>" title="other" /></li>
+</ul>
+
+<ul class="languages">
+    <li><label>languages:</label></li>
+    
+<?php		foreach($this->languages as $language) { ?>
+	<li>
+		<input type="checkbox" name="<?= strtolower($language['type']) ?>" id="<?= strtolower($language['type']) ?>" value="<?= $language['id'] ?>"<?php 
+				foreach( $this->project['languages'] as $projLanguage ) {
+					echo ( $projLanguage == $language['type'] ) ? ' checked="checked"' : "";
+				}?> /> <?= $language['type'] ?>
+	</li>			
+<?php		}?>
+    
+    <li><input type="text" name="otherLanguages" id="otherLanguages" class="other-box" value="<?=stripslashes( $this->project['info']['other_languages'] )?>" title="other"/></li>
+</ul>
+</span>
+    <br />
+    <label>date:</label>
+		<select name="date_month" id="date_month">
+			<option value="default_month"<?= ( $this->project['info']['courses'] == 'default_month' ) ? ' selected="selected"' : "" ?>>Month</option>
+			<option value="january"<?= ( $this->project['info']['courses'] == 'january' ) ? ' selected="selected"' : "" ?>>January</option>
+			<option value="february"<?= ( $this->project['info']['courses'] == 'february' ) ? ' selected="selected"' : "" ?>>February</option>
+			<option value="march"<?= ( $this->project['info']['courses'] == 'march' ) ? ' selected="selected"' : "" ?>>March</option>
+			<option value="april"<?= ( $this->project['info']['courses'] == 'april' ) ? ' selected="selected"' : "" ?>>April</option>
+			<option value="may"<?= ( $this->project['info']['courses'] == 'may' ) ? ' selected="selected"' : "" ?>>May</option>
+			<option value="june"<?= ( $this->project['info']['courses'] == 'june' ) ? ' selected="selected"' : "" ?>>June</option>
+			<option value="july"<?= ( $this->project['info']['courses'] == 'july' ) ? ' selected="selected"' : "" ?>>July</option>
+			<option value="august"<?= ( $this->project['info']['courses'] == 'august' ) ? ' selected="selected"' : "" ?>>August</option>
+			<option value="september"<?= ( $this->project['info']['courses'] == 'september' ) ? ' selected="selected"' : "" ?>>September</option>
+			<option value="october"<?= ( $this->project['info']['courses'] == 'october' ) ? ' selected="selected"' : "" ?>>October</option>
+			<option value="november"<?= ( $this->project['info']['courses'] == 'november' ) ? ' selected="selected"' : "" ?>>November</option>
+			<option value="december"<?= ( $this->project['info']['courses'] == 'december' ) ? ' selected="selected"' : "" ?>>December</option>
+		</select>
+		
+		<select name="date_day" id="date_day">
+			<option value="default_day">Day</option>
+			<?php for($i = 1; $i <= 31; $i++) { ?>
+				<option value="<?=$i?>"<?= ( $this->project['info']['date_day'] == $i ) ? ' selected="selected"' : "" ?>><?=$i?></option>'
+			<?php } ?>
+		</select>
+		
+		<select name="date_year" id="date_year">
+			<option value="default_year">Year</option>
+			<?php for($k = 2000; $k <= 2030; $k++) { ?>
+				<option value="<?=$k?>"<?= ( $this->project['info']['date_year'] == $k ) ? ' selected="selected"' : "" ?>><?=$k?></option>'
+			<?php } ?>
+		</select>
+    <br /><br /><br />
+    <label>assignment specs:</label>
+    <textarea rows="4" cols="60" name="assign_spec" id="assign_spec"><?= stripslashes( $this->project['info']['assign_spec'] ) ?></textarea>
+    <br />
+    <br />
+    <label>project approach:</label>
+    <textarea rows="4" cols="60" name="project_approach" id="project_approach"><?= stripslashes( $this->project['info']['project_approach'] ) ?></textarea>
+    <br />
+    <br />
+    <a href="/project/view/id/<?= $this->project['info']['id'] ?>">Cancel</a>
+    <input type="submit" value="submit" id="submit"/>
+    </form>
+</div>

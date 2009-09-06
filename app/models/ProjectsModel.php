@@ -117,11 +117,20 @@
 		
 			//Set arguments to Zend insert associative array
 			$insertArgs = array(
-				'first_name'        => $arguments[1],
-				'last_name'         => $arguments[2],
+				'title'        		=> $_POST[ $arguments[0] ],
+				'url'        		=> $_POST[ $arguments[1] ],
+				'author_id'         => $arguments[2] 		  ,
+				'courses'         	=> $_POST[ $arguments[3] ],
+				'date_month'        => $_POST[ $arguments[4] ],
+				'date_day'         	=> $_POST[ $arguments[5] ],
+				'date_year'     	=> $_POST[ $arguments[6] ],
+				'assign_spec'       => $_POST[ $arguments[7] ],
+				'project_approach'  => $_POST[ $arguments[8] ],
+				'other_tools'  		=> $_POST[ $arguments[9] ],
+				'other_languages'  	=> $_POST[ $arguments[10] ],
 				);
 				
-			$where[] = "id = '{$arguments[0]}'";
+			$where[] = "id = '{$arguments[11]}'";
 			
 			//Update
 			return $db->update($this->table, $insertArgs, $where);
@@ -137,6 +146,18 @@
 		
 			//Delete from table
 			return $db->delete($this->table, $delete);
+		}
+		
+		function isOwner( $arguments )
+		{
+			//Connect to database
+			$db = $this->getDefaultAdapter();
+			
+			//Set arguments to select statement
+			$select = "SELECT * FROM $this->table WHERE id = '{$arguments[1]}' AND author_id = '{$arguments[0]}'";
+		
+			//Select from table
+			return $db->fetchRow($select);
 		}
 	}
 ?>
