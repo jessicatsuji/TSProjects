@@ -1,45 +1,31 @@
-<div class="container">
+<div id="user_dashboard" class="container">
 <?php 
 /**
 * User's Dashboard of their own projects
 * this will grab their newest 6 projects and display the for all the world to see
 */
 ?>
-<h1>Hello! You've reached TSProject, the Project Admin for the Art Institute's WDIM Department's Touch Screen Display.</h1>
+<h1>This is the user dashboard for <?= $this->first_name . " " . $this->last_name; ?>.</h1>
 <p>What would you like to do? </p>
 
-<div class="login">
-	<a href="/account/new">Create A New Account.</a>
-
-	<?php if($this->user_id != "") { ?>
+<div class="options">
+	<a href="/">Go Home</a>
+	
+	<a href="/project/new">Add A New Project</a>
 
 	<a href="/account/logout">Logout</a>
 
-	<?php 		echo "User Id: " . $this->user_id; 
-			} else { ?>
-
-	<form action="/account/login" method="post">
-		<label>Email</label>
-		<input name="email"id="email" type="text" />
-		<br />
-	
-		<label>Password</label>
-		<input name="pass"id="pass" type="text" />
-	
-	    <input type="submit" value="submit" id="submit"/>
-	</form>
+	<span class="user"><?= "User: " . $this->first_name . " " . $this->last_name; ?></span>
 </div>		
-<?php 	}
 
-for($m = 0; $m <= 5; $m++){
-
-echo '<div class="project">';
-	echo '<div class="landing">';
-		echo 'Insert Thumbnail Photo Here';
-	echo '</div>';
-	echo '<h3> Insert Project Title here </h3>';
-echo '</div>';
-}
-
-?>
+<?php
+		foreach ( $this->all_projects as $proj ) { ?>
+	<div class="project">
+		<div class="thumb">
+			<img src="default.jpg" />
+		</div>
+		<h3><a href="/project/view/id/<?= $proj['id'] ?>" ><?= $proj['title'] ?></a></h3>
+		<h4><?= $proj['author'] ?></h4>
+	</div>
+<?php	} ?>
 </div>

@@ -1,4 +1,4 @@
-/* PLEASE NOT THAT AT LINE 108 IS TESTING FOR LANDING PAGE COMMENT OUT IF NEEDED */
+/* PLEASE NOT THAT AT LINE 108 IS TESTING FOR LANDING & DASHBOARD PAGES COMMENT OUT IF NEEDED */
 
 * {
 margin:0 auto;
@@ -106,13 +106,13 @@ color:#fff;
 }
 
 /************************** for testing of landing page **********************************/
-.landing-container {
+.container {
 	border: solid 1px #ff0000;
 	width:1020px;
 	height: 768px;
 }
 
-.landing-project-container {
+.project {
 	border: solid 1px #00ff00;
 	width: 200px;
 	height: 200px;
@@ -120,7 +120,7 @@ color:#fff;
 	float: left;
 }
 
-.landing-project-container .landing-thumb {
+.project .thumb {
 	border: solid 1px #0000ff;
 	width:100px;
 	height: 100px;
@@ -129,7 +129,7 @@ color:#fff;
 	margin-top: 10px;
 }
 
-.landing-project-container h3 {
+.project h3 {
 	margin-top: 10px;
 	text-align: center;
 }

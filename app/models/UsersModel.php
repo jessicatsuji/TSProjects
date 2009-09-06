@@ -12,7 +12,7 @@
 			$select = "SELECT * FROM $this->table WHERE id = '{$arguments[0]}'";
 		
 			//Select from table
-			return $db->fetchAssoc($select);
+			return $db->fetchRow($select);
 		}
 
 		function getAll( )

@@ -12,7 +12,7 @@
 			$select = "SELECT * FROM $this->table WHERE id = '{$arguments[0]}'";
 		
 			//Select from table
-			return $db->fetchAssoc($select);
+			return $db->fetchRow($select);
 		}
 
 		function getAll()
@@ -22,6 +22,18 @@
 			
 			//Set arguments to select statement
 			$select = "SELECT * FROM $this->table";
+		
+			//Select from table
+			return $db->fetchAssoc($select);
+		}
+
+		function getUserProj($arguments)
+		{
+			//Connect to database
+			$db = $this->getDefaultAdapter();
+			
+			//Set arguments to select statement
+			$select = "SELECT * FROM $this->table WHERE author_id = '{$arguments[0]}'";
 		
 			//Select from table
 			return $db->fetchAssoc($select);
