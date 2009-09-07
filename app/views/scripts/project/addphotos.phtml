@@ -1,0 +1,51 @@
+<form action="/project/upload/id/<?= $this->id ?>" method="post" enctype="multipart/form-data" name="userGeneralSubmit" id="userGeneralSubmit" class="userGeneralSubmit">
+    <fieldset>
+        <legend>Thumbnail Photos:</legend>
+        
+        <label>Portrait Thumbnail (262px by 295px)</label>
+        <?= (isset($this->photos['portrait'])) ? '<a href="/project/removephoto/id/' . $this->photos['portrait']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
+        <?= (isset($this->photos['portrait'])) ? '<img src="/uploads/' . $this->photos['portrait']['file_name'] . '" />' : ''?>	
+        <input type="file" name="portrait" class="portrait" id="portrait" <?= (isset($this->photos['portrait'])) ? 'disabled = disabled' : ''?> />
+        
+        <label>Landscape Thumbnail (300px by 118px)</label>
+        <?= (isset($this->photos['landscape'])) ? '<a href="/project/removephoto/id/' . $this->photos['landscape']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
+        <?= (isset($this->photos['landscape'])) ? '<img src="/uploads/' . $this->photos['landscape']['file_name'] . '" />' : ''?>
+        <input type="file" name="landscape" class="landscape" id="landscape" <?= (isset($this->photos['landscape'])) ? 'disabled = disabled' : ''?> />
+	</fieldset>
+
+    <fieldset>
+        <legend>Fullscreen Screenshot: (1280px by 800px)</legend>
+        
+        <label>Screenshot #1</label>
+        <?= (isset($this->photos['screenshot_1'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_1']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_1'])) ? '<img src="/uploads/' . $this->photos['screenshot_1']['file_name'] . '" />' : ''?>
+        <input type="file" name="screenshot_1" class="screenshot_1" id="screenshot_1" <?= (isset($this->photos['screenshot_1'])) ? 'disabled = disabled' : ''?>/>
+        
+        <label>Screenshot #2</label>
+        <?= (isset($this->photos['screenshot_2'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_2']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_2'])) ? '<img src="/uploads/' . $this->photos['screenshot_2']['file_name'] . '" />' : ''?>
+        <input type="file" name="screenshot_2" class="screenshot_2" id="screenshot_2" <?= (isset($this->photos['screenshot_2'])) ? 'disabled = disabled' : ''?>/>
+        
+        <label>Screenshot #3</label>
+        <?= (isset($this->photos['screenshot_3'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_3']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_3'])) ? '<img src="/uploads/' . $this->photos['screenshot_3']['file_name'] . '" />' : ''?>
+        <input type="file" name="screenshot_3" class="screenshot_3" id="screenshot_3" <?= (isset($this->photos['screenshot_3'])) ? 'disabled = disabled' : ''?>/>
+        
+        <label>Screenshot #4</label>
+        <?= (isset($this->photos['screenshot_4'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_4']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_4'])) ? '<img src="/uploads/' . $this->photos['screenshot_4']['file_name'] . '" />' : ''?>
+        <input type="file" name="screenshot_4" class="screenshot_4" id="screenshot_4" <?= (isset($this->photos['screenshot_4'])) ? 'disabled = disabled' : ''?>/>
+        
+        <label>Screenshot #5</label>
+        <?= (isset($this->photos['screenshot_5'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_5']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_5'])) ? '<img src="/uploads/' . $this->photos['screenshot_5']['file_name'] . '" />' : ''?>
+        <input type="file" name="screenshot_5" class="screenshot_5" id="screenshot_5" <?= (isset($this->photos['screenshot_5'])) ? 'disabled = disabled' : ''?>/>
+        
+        <label>Screenshot #6</label>
+        <?= (isset($this->photos['screenshot_6'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_6']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_6'])) ? '<img src="/uploads/' . $this->photos['screenshot_6']['file_name'] . '" />' : ''?>
+        <input type="file" name="screenshot_6" class="screenshot_6" id="screenshot_6" <?= (isset($this->photos['screenshot_6'])) ? 'disabled = disabled' : ''?>/>
+	</fieldset>
+
+    <input type="submit" name="submitImageForm" value="submit" id="submitImageForm" class="submitImageForm" />
+</form>

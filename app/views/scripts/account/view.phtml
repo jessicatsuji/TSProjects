@@ -22,7 +22,7 @@
 		foreach ( $this->all_projects as $proj ) { ?>
 	<div class="project">
 		<div class="thumb">
-			<img src="default.jpg" />
+			<img src="<?= (isset($proj['photo'])) ? "/uploads/{$proj['photo']['file_name']}" : "/images/default.jpg" ?>" />
 		</div>
 		<h3><a href="/project/view/id/<?= $proj['id'] ?>" ><?= $proj['title'] ?></a></h3>
 		<h4><?= $proj['author'] ?></h4>

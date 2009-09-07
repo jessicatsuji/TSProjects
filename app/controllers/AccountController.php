@@ -1,6 +1,7 @@
 <?php
 	require_once( '../app/models/ProjectsModel.php' );
 	require_once( '../app/models/UsersModel.php' );
+	require_once( '../app/models/PhotosModel.php' );
 	
 	class AccountController extends Zend_Controller_Action
 	{
@@ -14,6 +15,7 @@
 			
 			$this->projects_model = new ProjectsModel( );
 			$this->users_model = new UsersModel( );
+			$this->photos_model = new PhotosModel( );
 			//$this->_helper->layout->setLayout('');
 		}
 		
@@ -108,6 +110,12 @@
 			foreach( $all_proj as &$proj ) {
 				$author = $this->users_model->getOne( array( $proj['author_id'] ) );
 				$proj['author'] = $author['first_name'] . " " . $author['last_name'];
+				
+				
+				$photos = $this->photos_model->getAll( array ( $proj['id'] ) );
+				
+				if( isset($photos['portrait']))
+					$proj['photo'] = $photos['portrait'];
 			}
 			
 			$this->view->all_projects = $all_proj;

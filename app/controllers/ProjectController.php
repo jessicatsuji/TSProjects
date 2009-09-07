@@ -5,6 +5,7 @@
 	require_once( '../app/models/ProjectsModel.php' );
 	require_once( '../app/models/ProjectToolsModel.php' );
 	require_once( '../app/models/ProjectLanguagesModel.php' );
+	require_once( '../app/models/PhotosModel.php' );
 	
 	class ProjectController extends Zend_Controller_Action
 	{
@@ -30,6 +31,7 @@
 			$this->projects_model = new ProjectsModel( );
 			$this->project_tools_model = new ProjectToolsModel( );
 			$this->project_languages_model = new ProjectLanguagesModel( );
+			$this->photos_model = new PhotosModel( );
 			
 			$this->tools = $this->tools_model->getAll( );
 			$this->languages = $this->languages_model->getAll( );
@@ -89,9 +91,62 @@
 			header('Location: /account/view');
 		}
 		
+		public function addphotosAction()
+		{
+		
+			//Verify Owner
+			$project_id = $this->_request->getParam('id');
+			$project_helper = $this->_helper->Projects;
+			if( !$project_helper->isOwner( $this->session->user_id, $project_id, $this->projects_model ) ) {
+				header("Location: /error/error");
+			} else {
+				$this->view->id = $project_id;
+				$this->view->photos = $this->photos_model->getAll( array( $project_id ) );
+			}
+		}
+		
 		public function uploadAction()
 		{
 		
+			$project_id = $this->_request->getParam('id');
+			//Validate that project belongs to user here.
+			$project_helper = $this->_helper->Projects;
+			if( $project_helper->isOwner( $this->session->user_id, $project_id, $this->projects_model ) ) {
+			    
+	            $adapter = new Zend_File_Transfer_Adapter_Http();
+	            
+	            foreach($adapter->getFileInfo() as $key => $file) {
+	            	if($file != NULL) {
+		            	//Get extension
+			            $path = split("[/\\.]", $file['name']);
+						$ext = end($path);
+		
+						try {
+							$adapter->addValidator('Extension', false, array('extension' => 'jpg,gif,png', 'case' => true));
+							//Should probably use the array method below to enable overwriting
+							$new_name = md5(rand()) .'-' . $project_id . '.' . $ext;
+							//Add rename filter
+							$adapter->addFilter('Rename', '/Applications/MAMP/htdocs/Repositories/TSProjects/public/uploads/' . $new_name);
+						} catch(Zend_File_Transfer_Exception $e) {
+							//die($e->getMessage());
+							$error = $e->getMessage();
+						}
+						
+			            try {
+			            	//Store
+			            	if ($adapter->receive($file['name'])) {
+					        	$this->photos_model->addOne( array( $new_name, $key, $project_id ) );
+					        }
+			            } catch (Zend_File_Transfer_Exception $e) {
+			            	//die($e->getMessage());
+							$error = $e->getMessage();
+			            }
+			    	}
+	            }
+	            header("Location: /project/view/id/{$project_id}");
+            } else {
+            	header("Location: /account/view");
+            }
 		}
 		
 		public function createdAction()
@@ -113,7 +168,7 @@
 				
 				$this->project['author'] = $this->users_model->getOne( array( $this->project['info']['author_id'] ) );
 				
-				//$this->project['images'] = $this->image_model->getAll($project_id);
+				$this->project['photos'] = $this->photos_model->getAll( array ( $project_id ) );
 				
 				$projTools = $this->project_tools_model->getOneByProject( array( $project_id ) );
 				$this->project['tools'] = array();
@@ -136,7 +191,7 @@
 		public function editAction()
 		{
 		
-			//Verify Exists
+			//Verify Owner
 			$project_id = $this->_request->getParam('id');
 			$project_helper = $this->_helper->Projects;
 			if( !$project_helper->isOwner( $this->session->user_id, $project_id, $this->projects_model ) ) {
@@ -223,16 +278,20 @@
 			header("Location: /project/view/id/$project_id");
 		}
 		
-		public function reuploadAction()
-		{
-		
-		}
-		
 		public function removeAction()
 		{
 			$project_id = $this->_request->getParam('id');
 				
 			$this->view->project = $this->projects_model->getOne( array ( $project_id ) );
+		}
+		
+		public function removephotoAction()
+		{
+			$photo_id = $this->_request->getParam('id');
+			$project_id = $this->_request->getParam('project');
+				
+			$this->view->photo = $this->photos_model->getOne( array ( $photo_id ) );
+			$this->view->id = $project_id;
 		}
 		
 		public function deleteAction()
@@ -241,13 +300,28 @@
 				
 			$this->projects_model->deleteOne( array( $project_id ));
 			
-			//$this->image_model->deleteAll($project_id);
+			$this->photos_model->deleteAll( array ( $project_id ) );
 			
 			$this->project_tools_model->deleteAll( array( $project_id ) );
 			
 			$this->project_languages_model->deleteAll( array( $project_id ) );
 			
 			header("Location: /account/view");
+		}
+		
+		public function deletephotoAction()
+		{
+			$photo_id = $this->_request->getParam('id');
+			$project_id = $this->_request->getParam('project');
+			
+			//Varify Project Ownership
+			$project_helper = $this->_helper->Projects;
+			if($project_helper->isOwner($this->session->user_id, $project_id, $this->projects_model)) {
+				$this->photos_model->deleteOne( array( $photo_id, $project_id ) );
+			}
+			
+			header("Location: /project/addphotos/id/{$project_id}");
+			
 		}
 		
 		public function editedAction()

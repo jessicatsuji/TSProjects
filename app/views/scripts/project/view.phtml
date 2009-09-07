@@ -40,6 +40,7 @@
 	
 	<?php 	if ( $this->user_id == $this->project['author']['id'] ) { ?>
 	<div>Project Options: 
+		<a href="/project/addphotos/id/<?= $this->project['info']['id'] ?>">Add Photos to Project</a>
 		<a href="/project/edit/id/<?= $this->project['info']['id'] ?>">Edit Project</a>
 		<a href="/project/remove/id/<?= $this->project['info']['id'] ?>">Delete Project</a>
 	</div>
@@ -48,6 +49,13 @@
 	<address>Project URL: <?=stripslashes( $this->project['info']['url'] )?></address>
 	<h3>Project Author: <?=stripslashes( $this->project['author']['first_name'] ) . " " . stripslashes( $this->project['author']['last_name'] )?></h3>
 	<div>Date: <?= ucwords( $this->project['info']['date_month'] ) . " " . $this->project['info']['date_day'] . ", " . $this->project['info']['date_year']?></div>
+	
+	<div>
+		<?php foreach ( $this->project['photos'] as $photo ) { ?>
+		<img src="/uploads/<?= $photo['file_name'] ?>" />
+		<?php } ?>
+	</div>
+	
 	<div>
 		<h4>Tools:</h4>
 		<ul>

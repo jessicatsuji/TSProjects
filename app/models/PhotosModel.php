@@ -12,19 +12,27 @@
 			$select = "SELECT * FROM $this->table WHERE id = '{$arguments[0]}'";
 		
 			//Select from table
-			return $db->fetchAssoc($select);
+			return $db->fetchRow($select);
 		}
 
-		function getAll()
+		function getAll( $arguments )
 		{
 			//Connect to database
 			$db = $this->getDefaultAdapter();
 			
 			//Set arguments to select statement
-			$select = "SELECT * FROM $this->table";
+			$select = "SELECT * FROM $this->table WHERE project_id = '{$arguments[0]}'";
 		
 			//Select from table
-			return $db->fetchAssoc($select);
+			$images_array = $db->fetchAssoc($select);
+			
+			//Build array
+			$return_array = array();
+			foreach ($images_array as $images) {
+				$return_array[$images['type']] = array('file_name' => $images['file_name'], 'id' => $images['id']);
+			}
+
+			return $return_array;
 		}
 		
 		function addOne($arguments)
@@ -34,12 +42,16 @@
 		
 			//Set arguments to Zend insert associative array
 			$insertArgs = array(
-				'first_name'        => $arguments[0],
-				'last_name'         => $arguments[1],
+				'file_name'        	=> $arguments[0],
+				'type'         		=> $arguments[1],
+				'project_id'        => $arguments[2],
 				);
 		
 			//Insert into table
-			return $db->insert($this->table, $insertArgs);
+			$db->insert($this->table, $insertArgs);
+
+			//return Id of last inserted row
+			return $db->lastInsertId();
 		}
 		
 		function updateOne($arguments)
@@ -65,7 +77,19 @@
 			$db = $this->getDefaultAdapter();
 		
 			//Set arguments to select statement
-			$delete = "id = '{$arguments[0]}'";
+			$delete = "id = '{$arguments[0]}' AND project_id = '{$arguments[1]}'";
+		
+			//Delete from table
+			return $db->delete($this->table, $delete);
+		}
+		
+		function deleteAll($arguments)
+		{
+			//Connect to database
+			$db = $this->getDefaultAdapter();
+		
+			//Set arguments to select statement
+			$delete = "project_id = '{$arguments[0]}'";
 		
 			//Delete from table
 			return $db->delete($this->table, $delete);
