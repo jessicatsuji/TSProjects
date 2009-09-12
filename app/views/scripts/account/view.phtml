@@ -1,4 +1,4 @@
-<div id="user_dashboard" class="container">
+<div id="user_dashboard" class="container contain-all">
 <?php 
 /**
 * User's Dashboard of their own projects
@@ -14,7 +14,13 @@
 <span class="user"><?= "User: " . $this->first_name . " " . $this->last_name; ?></span>
 <?php 	} ?>
 	
-<h1>This is the user dashboard for <?= $this->first_name . " " . $this->last_name; ?>.</h1>
+
+<span class="aipd"></span>
+<h1>Ts Projects</h1>
+
+<div class="entryForm">
+
+<h2>This is the user dashboard for <?= $this->first_name . " " . $this->last_name; ?>.</h2>
 
 <div class="options">
 	<p>What would you like to do? </p>
@@ -33,4 +39,5 @@
 		<h4><?= $proj['author'] ?></h4>
 	</div>
 <?php	} ?>
+</div>
 </div>

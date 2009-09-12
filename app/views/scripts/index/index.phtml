@@ -1,4 +1,4 @@
-<div id="landing" class="container">
+<div id="landing" class="container contain-all">
 <?php 
 /**
 * Landing Page
@@ -12,7 +12,13 @@
 <span class="user"><?= "User: " . $this->first_name . " " . $this->last_name; ?></span>
 <?php 	} ?>
 	
-<h1>Hello! You've reached TSProject, the Project Admin for the Art Institute's WDIM Department's Touch Screen Display.</h1>
+
+<span class="aipd"></span>
+<h1>Ts Projects</h1>
+
+<div class="entryForm">
+
+<h2>Hello! You've reached TSProject, the Project Admin for the Art Institute's WDIM Department's Touch Screen Display.</h2>
 
 <div class="options">
 	<p>What would you like to do? </p>
@@ -49,4 +55,5 @@
 		<h4><?= $proj['author'] ?></h4>
 	</div>
 <?php	} ?>
+</div>
 </div>
