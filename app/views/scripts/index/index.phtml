@@ -5,22 +5,24 @@
 * this will grab the newest 6 projects and display the for all the world to see
 */
 ?>
+
+<?php if($this->user_id != "") { ?>
+<a class="logout" href="/account/logout">logout</a>
+
+<span class="user"><?= "User: " . $this->first_name . " " . $this->last_name; ?></span>
+<?php 	} ?>
+	
 <h1>Hello! You've reached TSProject, the Project Admin for the Art Institute's WDIM Department's Touch Screen Display.</h1>
-<p>What would you like to do? </p>
 
 <div class="options">
+	<p>What would you like to do? </p>
 	<?php if($this->user_id != "") { ?>
-	<a href="/account/view">View your Account</a>
+	<a class="view" href="/account/view">view your account</a>
 	
-	<a href="/project/new">Add A New Project</a>
-
-	<a href="/account/logout">Logout</a>
-
-	<span class="user"><?= "User: " . $this->first_name . " " . $this->last_name; ?></span>
+	<a class="newProject" href="/project/new">add a new project</a>
 <?php		} else { ?>
-	<a href="/account/new">Create A New Account.</a>
 
-
+	<p class="descrip">Sign In:</p>
 	<form action="/account/login" method="post">
 		<label>Email</label>
 		<input name="email"id="email" type="text" />
@@ -31,6 +33,9 @@
 	
 	    <input type="submit" value="submit" id="submit"/>
 	</form>
+	
+	<p class="descrip">Start a new Account:</p>
+	<a class="create" href="/account/new">create new account</a>
 <?php 	} ?>
 </div>		
 

@@ -83,7 +83,9 @@
     <textarea rows="4" cols="60" name="project_approach" id="project_approach"><?= stripslashes( $this->project['info']['project_approach'] ) ?></textarea>
     <br />
     <br />
-    <a href="/project/view/id/<?= $this->project['info']['id'] ?>">Cancel</a>
-    <input type="submit" value="submit" id="submit"/>
+    <span class="center-buttons">
+	    <input type="submit" value="submit" id="submit"/>
+    	<a class="cancel-lrg" id="cancel" href="/project/view/id/<?= $this->project['info']['id'] ?>">Cancel</a>
+	</span>
     </form>
 </div>

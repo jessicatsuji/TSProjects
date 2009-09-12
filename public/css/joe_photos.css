@@ -24,8 +24,12 @@ margin:15px;
 text-align:center;
 }
 
+
+
 label{
 display:inline-block;
+font-weight:bold;
+letter-spacing:-.03em;
 line-height:22px;
 text-align:right;
 vertical-align:top;
@@ -37,25 +41,10 @@ border:1px solid #737373;
 margin:5px 0;
 }
 
-/*
-.entryForm{
-background:#FFF;
-display:block;
-height:auto;
-margin-bottom:20px;
-padding:25px;
-width:700px;
-
--webkit-border-radius: 18px;  
--moz-border-radius: 18px;  
--khtml-border-radius: 18px;  
-border-radius: 18px; 
-}
-*/
-
+fieldset{border:none;}
 
 .aipd{
-background:transparent url(logo-ai.png) no-repeat; 
+background:transparent url(/images/logo-ai.png) no-repeat; 
 display:block;
 height:40px;
 margin-top:10px;
@@ -66,12 +55,9 @@ width:54px;
 background:#FFF;
 display:block;
 height:auto;
-margin-top:25px;
 margin-bottom:20px;
-max-width:960px;
-min-width:350px;
 padding:25px;
-width:700px;
+width:960px;
 
 -webkit-border-radius: 18px;  
 -moz-border-radius: 18px;  
@@ -116,19 +102,15 @@ margin: 0 80px 0 0;
 padding:5px;
 }
 
-/*
-#cancel, #submit{
+#submit{
 border:none;
 background: transparent url(/images/bg_butn-submit.png) no-repeat;
 cursor:pointer;
 color:#00a8ff;
 display:block;
-font-size: 11px;
 height:35px;
 margin-left:325px;
-padding: 10px 0;
 text-align:center;
-text-decoration: none;
 width:82px;
 
 -webkit-border-radius: 3px;  
@@ -141,31 +123,103 @@ border-radius: 3px;
 background:#4b4d45;
 color:#fff;
 }
-*/
 
+/*ADD_PHOTOS.html - begin*/
 
-
-.center-buttons{
-border:1px slid red;
+.contain-upload{
+background:#f3f3f3;
+border:1px solid #d5d6d4;
 display:block;
-height:50px;
-margin:0 auto;
+float:left;
+height:auto;
 padding:0;
-width:200px;
+width:700px;
 }
 
-.remove {
-	width: 100px;
+.button{opacity:.8;}
+.button:hover{opacity:1;}
+
+.contain-upload .upload-full input{
+margin:0 0 0 51px;
+width:80px;
 }
 
-#submit{
+.l-col-upload{
+display:inline-block;
+height:auto;
+list-style:none;
+margin:0 auto;
+min-height:400px;
+padding:10px 10px 0 0;
+width:225px;
+}
+
+.r-col-upload{
+border-left:1px solid #737373;
+display:inline-block;
+height:auto;
+list-style:none;
+margin:0 auto;
+min-height:400px;
+padding:10px 0 0 20px;
+width:700px;
+}
+
+.upload-square{
+display:inline-block;
+height:180px;
+margin:0 auto;
+width:123px;
+}
+
+.upload-square .thumb{
+background:transparent url(/images/img-upload-thumb-square.png) no-repeat;
+display:block;
+height:83px;
+margin:0 auto;
+width:74px;
+}
+
+.upload-landscape{
+display:inline-block;
+height:150px;
+margin:0 auto;
+width:123px;
+}
+
+.upload-landscape .thumb{
+background:transparent url(/images/img-upload-thumb-landscape.png) no-repeat;
+display:block;
+height:47px;
+margin:0 auto;
+width:75px;
+}
+
+.upload-full{
+display:inline-block;
+height:180px;
+padding:0;
+margin:0;
+width:225px;
+}
+
+.upload-full .thumb{
+background:transparent url(/images/img-upload-thumb-full.png)  no-repeat;
+display:block;
+height:78px;
+margin:0 auto;
+margin-bottom:5px;
+width:99px;
+}
+
+#submitImageForm{
 background:#00a8ff;
 border:none;
 color:#fff;
 font-size:24px;
 padding:5px 10px;
-text-align: center;
-text-decoration: none;
+position:relative;
+left:720px;
 text-shadow: rgba(0,0,0,.5) 0 -1px 0;
 
 -webkit-border-radius: 3px;  
@@ -174,75 +228,18 @@ text-shadow: rgba(0,0,0,.5) 0 -1px 0;
 border-radius: 3px;
 }
 
-#submit:hover{
-background:#4b4d45;
-color:#fff;
-cursor:pointer;
-}
+#submitImageForm:hover,#addScreenshot:hover,.delete:hover{background:#434343;cursor:pointer;}
 
-.cancel-lrg:hover{
-background:#EC1C24;
-color:#fff;
-cursor:pointer;
-text-shadow: rgba(0,0,0,.5) 0 -1px 0;
-}
-
-.cancel-lrg{
-background:#fff;
-border:1px solid #EC1C24;
-color:#EC1C24;
-display:inline-block;
-height:auto;
-font-size:13px;
-margin:0 auto;
-margin-left:10px;
-padding:3px 15px 3px 10px;
-width:36px;
-
--webkit-border-radius: 3px;  
--moz-border-radius: 3px;  
--khtml-border-radius: 3px;  
-border-radius: 3px;
-}
-
-.back {
-	position: relative;
-	left: 700px;
-	width: 85px;
-	text-align: center;	
-}
-
-h2{
-color:#434343;
-font-family:Arial, Helvetica, sans-serif;
-font-size:26px;
-font-weight:400;
-letter-spacing:-.04em;
-margin:15px;
-text-align:center;
-}
-
-img{
-display:block;
-height:auto;
-width:auto;
-margin:0 auto;
-padding:0;
-}
-
-.yes:hover{background:#434343;cursor:pointer;}
-
-.yes{
+#addScreenshot{
 background:#11d728;
 border:none;
 color:#fff;
-display:inline-block;
-height:auto;
 font-size:19px;
-margin:0 auto;
+margin:20px 0 20px 0;
 padding:3px 10px;
+position:relative;
+left:514px;
 text-shadow: rgba(0,0,0,.5) 0 -1px 0;
-width:30px;
 
 -webkit-border-radius: 3px;  
 -moz-border-radius: 3px;  
@@ -250,32 +247,24 @@ width:30px;
 border-radius: 3px;
 }
 
-.no:hover{
+.delete{
 background:#EC1C24;
+border:none;
 color:#fff;
-cursor:pointer;
-text-shadow: rgba(0,0,0,.5) 0 -1px 0;
+font-size:10px;
+margin:0;
+padding:3px 5px;
+text-shadow: rgba(0,0,0,.2) 0 -1px 0;
+
+-webkit-border-radius: 1em;  
+-moz-border-radius: 1em;  
+-khtml-border-radius: 1em;  
+border-radius: 1em;
 }
 
-.no{
-background:#fff;
-border:1px solid #EC1C24;
-color:#EC1C24;
-display:inline-block;
-height:auto;
-font-size:13px;
-margin:0 auto;
-padding:3px 10px;
-width:17px;
-
--webkit-border-radius: 3px;  
--moz-border-radius: 3px;  
--khtml-border-radius: 3px;  
-border-radius: 3px;
-}
+/*ADD_PHOTOS.html - end*/
 
 /************************** for testing of landing page **********************************/
-/*
 .container {
 	border: solid 1px #ff0000;
 	width:1020px;
@@ -303,6 +292,5 @@ border-radius: 3px;
 	margin-top: 10px;
 	text-align: center;
 }
-*/
 
 /************************* end of testing for landing page ***************************/

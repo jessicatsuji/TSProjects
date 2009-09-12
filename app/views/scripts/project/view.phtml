@@ -1,23 +1,24 @@
-<div id="individual_project" class="container">
+<div id="individual_project" class="container contain-all">
 <?php 
 /**
 * Individual Project Info
 */
 ?>
+<span class="aipd"></span>
+<h1>Ts Projects</h1>
+
+<div class="entryForm">
+
+	<div id="individual_project" class="container">
 <h1>Project: <?=stripslashes( $this->project['info']['title'] )?></h1>
-<p>What would you like to do? </p>
-
+<p class="welcome">What would you like to do? </p>
+<br />
 <div class="options">
-	<?php if($this->user_id != "") { ?>
-	<a href="/">Go Home</a>
-	
-	<a href="/account/view">View your Account</a>
-	
-	<a href="/project/new">Add A New Project</a>
-
-	<a href="/account/logout">Logout</a>
-
+<span class="admin-bar">
+<?php if($this->user_id != "") { ?>
 	<span class="user"><?= "User: " . stripslashes( $this->first_name ) . " " . stripslashes( $this->last_name ); ?></span>
+
+	<a class="logout" title="" href="/account/logout">Logout</a>
 	<?php		} else { ?>
 	<a href="/account/new">Create A New Account.</a>
 
@@ -33,29 +34,35 @@
 	    <input type="submit" value="submit" id="submit"/>
 	</form>
 <?php 	} ?>
-</div>	
-
-<div>
-	<h2>Project Title: <?=stripslashes( $this->project['info']['title'] )?></h2>
-	
+</span><!--/admin-bar -->
+	<a href="/" class="nav-boxes home" title="Go Home"></a> 
 	<?php 	if ( $this->user_id == $this->project['author']['id'] ) { ?>
-	<div>Project Options: 
-		<a href="/project/addphotos/id/<?= $this->project['info']['id'] ?>">Add Photos to Project</a>
-		<a href="/project/edit/id/<?= $this->project['info']['id'] ?>">Edit Project</a>
-		<a href="/project/remove/id/<?= $this->project['info']['id'] ?>">Delete Project</a>
-	</div>
-	<?php	} ?>
+    <a href="/account/view" class="nav-boxes view-account" title="View your Account"></a> 
+    <a href="/project/new" class="nav-boxes add-project" title="Add A New Project"></a> 
 	
+	<a href="/project/addphotos/id/<?= $this->project['info']['id'] ?>" class="nav-boxes add-photos" title="Add Photos to Project"></a>
+	<a href="/project/edit/id/<?= $this->project['info']['id'] ?>" class="nav-boxes edit-project" title="Edit Project"></a>
+	<a href="/project/remove/id/<?= $this->project['info']['id'] ?>" class="nav-boxes delete-project" title="Delete Project"></a>
+
+	<?php	} ?>
+</div>
+    
+    <br />
+		<h2>Project Title: <?=stripslashes( $this->project['info']['title'] )?></h2>
+	
+		<div>
+        <br />
 	<address>Project URL: <?=stripslashes( $this->project['info']['url'] )?></address>
 	<h3>Project Author: <?=stripslashes( $this->project['author']['first_name'] ) . " " . stripslashes( $this->project['author']['last_name'] )?></h3>
 	<div>Date: <?= ucwords( $this->project['info']['date_month'] ) . " " . $this->project['info']['date_day'] . ", " . $this->project['info']['date_year']?></div>
+    <br />
 	
 	<div>
 		<?php foreach ( $this->project['photos'] as $photo ) { ?>
 		<img src="/uploads/<?= $photo['file_name'] ?>" />
 		<?php } ?>
 	</div>
-	
+	<br />
 	<div>
 		<h4>Tools:</h4>
 		<ul>
@@ -64,6 +71,7 @@
 			<?php	} ?>
 		</ul>
 	</div>
+    <br />
 	<div>
 		<h4>Languages:</h4>
 		<ul>
@@ -72,7 +80,10 @@
 			<?php	} ?>
 		</ul>
 	</div>
-	<div>Assignment Specs: <?=stripslashes( $this->project['info']['assign_spec'] )?></div>
+	<div>Assignment Specs:  <?=stripslashes( $this->project['info']['assign_spec'] )?></div>
 	<div>Project Approach: <?=stripslashes( $this->project['info']['project_approach'] )?></div>
 </div>
 </div>
+
+</div>
+

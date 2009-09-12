@@ -1,3 +1,12 @@
-<h1>Are you sure you want to remove Project: <?=stripslashes( $this->project['title'] )?>?</h1>
-<a href="/project/delete/id/<?= $this->project['id'] ?>">Yes</a>
-<a href="/project/view/id/<?= $this->project['id'] ?>">No</a>
+<div class="contain-all">
+	<span class="aipd"/></span>
+	<h1>Ts Projects</h1>
+	
+	<div class="entryForm">
+		<h2>Are you sure you want to remove Project: <?=stripslashes( $this->project['title'] )?>?</h2>
+		<span class="center-buttons remove">
+			<a class="yes" href="/project/delete/id/<?= $this->project['id'] ?>">Yes</a>
+			<a class="no" href="/project/view/id/<?= $this->project['id'] ?>">No</a>
+		</span>
+	</div>
+</div>

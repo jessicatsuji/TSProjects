@@ -93,6 +93,7 @@
 		
 		public function addphotosAction()
 		{
+			$this->view->cssLink = "/css/joe_photos.css";
 		
 			//Verify Owner
 			$project_id = $this->_request->getParam('id');
@@ -156,6 +157,8 @@
 		
 		public function viewAction()
 		{
+			$this->view->cssLink = "/css/joe_project.css";
+			
 			//Verify Exists
 			$project_id = $this->_request->getParam('id');
 			$project_helper = $this->_helper->Projects;

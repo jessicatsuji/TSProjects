@@ -13,6 +13,7 @@ font-size:14px;
 }
 
 a{color:#00a8ff; text-decoration:none;}
+a:hover{text-decoration:underline;}
 
 h1{
 color:#434343;
@@ -37,25 +38,8 @@ border:1px solid #737373;
 margin:5px 0;
 }
 
-/*
-.entryForm{
-background:#FFF;
-display:block;
-height:auto;
-margin-bottom:20px;
-padding:25px;
-width:700px;
-
--webkit-border-radius: 18px;  
--moz-border-radius: 18px;  
--khtml-border-radius: 18px;  
-border-radius: 18px; 
-}
-*/
-
-
 .aipd{
-background:transparent url(logo-ai.png) no-repeat; 
+background:transparent url(/images/logo-ai.png) no-repeat; 
 display:block;
 height:40px;
 margin-top:10px;
@@ -116,19 +100,15 @@ margin: 0 80px 0 0;
 padding:5px;
 }
 
-/*
-#cancel, #submit{
+#submit{
 border:none;
 background: transparent url(/images/bg_butn-submit.png) no-repeat;
 cursor:pointer;
 color:#00a8ff;
 display:block;
-font-size: 11px;
 height:35px;
 margin-left:325px;
-padding: 10px 0;
 text-align:center;
-text-decoration: none;
 width:82px;
 
 -webkit-border-radius: 3px;  
@@ -141,146 +121,112 @@ border-radius: 3px;
 background:#4b4d45;
 color:#fff;
 }
-*/
 
+/*PROJECT.html - begin*/
 
+ul{list-style-position:inside;}
 
-.center-buttons{
-border:1px slid red;
+.admin-bar{
 display:block;
-height:50px;
-margin:0 auto;
-padding:0;
-width:200px;
-}
-
-.remove {
-	width: 100px;
-}
-
-#submit{
-background:#00a8ff;
-border:none;
-color:#fff;
-font-size:24px;
-padding:5px 10px;
-text-align: center;
-text-decoration: none;
-text-shadow: rgba(0,0,0,.5) 0 -1px 0;
-
--webkit-border-radius: 3px;  
--moz-border-radius: 3px;  
--khtml-border-radius: 3px;  
-border-radius: 3px;
-}
-
-#submit:hover{
-background:#4b4d45;
-color:#fff;
-cursor:pointer;
-}
-
-.cancel-lrg:hover{
-background:#EC1C24;
-color:#fff;
-cursor:pointer;
-text-shadow: rgba(0,0,0,.5) 0 -1px 0;
-}
-
-.cancel-lrg{
-background:#fff;
-border:1px solid #EC1C24;
-color:#EC1C24;
-display:inline-block;
+float:right;
 height:auto;
-font-size:13px;
-margin:0 auto;
-margin-left:10px;
-padding:3px 15px 3px 10px;
-width:36px;
-
--webkit-border-radius: 3px;  
--moz-border-radius: 3px;  
--khtml-border-radius: 3px;  
-border-radius: 3px;
-}
-
-.back {
-	position: relative;
-	left: 700px;
-	width: 85px;
-	text-align: center;	
-}
-
-h2{
-color:#434343;
-font-family:Arial, Helvetica, sans-serif;
-font-size:26px;
-font-weight:400;
-letter-spacing:-.04em;
-margin:15px;
-text-align:center;
-}
-
-img{
-display:block;
-height:auto;
+margin:-115px 0 0 0;
+position:relative;
 width:auto;
-margin:0 auto;
+}
+
+.welcome{
+color:#aaa;
+font-family:Georgia, "Times New Roman", Times, serif;
+font-size:24px;
+font-style:italic;
+}
+
+.nav-boxes{
+background:#00a8ff;
+color:#fff;
+display:inline-block;
+height:76px;
+margin:0 16px;
 padding:0;
+width:76px;
+
+-webkit-border-radius: 18px;  
+-moz-border-radius: 18px;  
+-khtml-border-radius: 18px;  
+border-radius: 18px;
 }
 
-.yes:hover{background:#434343;cursor:pointer;}
 
-.yes{
-background:#11d728;
-border:none;
-color:#fff;
+.home:hover{
+background:#00a8ff url(/images/icon-home.png) -76px 0 no-repeat;}
+.home{
+background:#00a8ff url(/images/icon-home.png) no-repeat;
 display:inline-block;
-height:auto;
-font-size:19px;
-margin:0 auto;
-padding:3px 10px;
-text-shadow: rgba(0,0,0,.5) 0 -1px 0;
-width:30px;
-
--webkit-border-radius: 3px;  
--moz-border-radius: 3px;  
--khtml-border-radius: 3px;  
-border-radius: 3px;
+height:76px;
+padding:0;
+width:76px;
 }
 
-.no:hover{
-background:#EC1C24;
-color:#fff;
-cursor:pointer;
-text-shadow: rgba(0,0,0,.5) 0 -1px 0;
-}
-
-.no{
-background:#fff;
-border:1px solid #EC1C24;
-color:#EC1C24;
+.view-account:hover{
+background:#00a8ff url(/images/icon-view-account.png) -76px 0 no-repeat;}
+.view-account{
+background:#00a8ff url(/images/icon-view-account.png) no-repeat;
 display:inline-block;
-height:auto;
-font-size:13px;
-margin:0 auto;
-padding:3px 10px;
-width:17px;
-
--webkit-border-radius: 3px;  
--moz-border-radius: 3px;  
--khtml-border-radius: 3px;  
-border-radius: 3px;
+height:76px;
+padding:0;
+width:76px;
 }
+
+.add-project:hover{
+background:#00a8ff url(/images/icon-add-project.png) -76px 0 no-repeat;}
+.add-project{
+background:#00a8ff url(/images/icon-add-project.png) no-repeat;
+display:inline-block;
+height:76px;
+padding:0;
+width:76px;
+}
+
+.delete-project:hover{
+background:#00a8ff url(/images/icon-delete-project.png) -76px 0 no-repeat;}
+.delete-project{
+background:#EC1C24 url(/images/icon-delete-project.png) no-repeat;
+display:inline-block;
+height:76px;
+padding:0;
+width:76px;
+}
+
+.edit-project:hover{
+background:#00a8ff url(/images/icon-edit-project.png) -76px 0 no-repeat;}
+.edit-project{
+background:#11d728 url(/images/icon-edit-project.png) no-repeat;
+display:inline-block;
+height:76px;
+padding:0;
+width:76px;
+}
+
+.add-photos:hover{
+background:#00a8ff url(/images/icon-add-photos.png) -76px 0 no-repeat;}
+.add-photos{
+background:#00a8ff url(/images/icon-add-photos.png) no-repeat;
+display:inline-block;
+height:76px;
+padding:0;
+width:76px;
+}
+
+
+/*PROJECT.html - end*/
 
 /************************** for testing of landing page **********************************/
-/*
-.container {
+/*.container {
 	border: solid 1px #ff0000;
 	width:1020px;
 	height: 768px;
-}
+}*/ /*REMOVED FOR STYLE*/
 
 .project {
 	border: solid 1px #00ff00;
@@ -303,6 +249,11 @@ border-radius: 3px;
 	margin-top: 10px;
 	text-align: center;
 }
-*/
 
 /************************* end of testing for landing page ***************************/
+.admin-bar{
+	width: 145px;
+}
+.admin-bar a, .admin-bar input {
+	float: right;
+}

@@ -1,51 +1,100 @@
+<div class="contain-all">
+<span class="aipd"></span>
+<h1>Ts Projects</h1>
+
+<div class="entryForm">
+    <h2>Upload your images</h2>
+
+<div class="l-col-upload">
+
 <form action="/project/upload/id/<?= $this->id ?>" method="post" enctype="multipart/form-data" name="userGeneralSubmit" id="userGeneralSubmit" class="userGeneralSubmit">
     <fieldset>
-        <legend>Thumbnail Photos:</legend>
-        
+        <!--<legend>Thumbnail Photos:</legend> -->
+        <br /><br />
+        <span class="upload-square">
         <label>Portrait Thumbnail (262px by 295px)</label>
-        <?= (isset($this->photos['portrait'])) ? '<a href="/project/removephoto/id/' . $this->photos['portrait']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
-        <?= (isset($this->photos['portrait'])) ? '<img src="/uploads/' . $this->photos['portrait']['file_name'] . '" />' : ''?>	
-        <input type="file" name="portrait" class="portrait" id="portrait" <?= (isset($this->photos['portrait'])) ? 'disabled = disabled' : ''?> />
+        <?= (isset($this->photos['portrait'])) ? '<a href="/project/removephoto/id/' . $this->photos['portrait']['id'] . '/project/' . $this->id . '" title="delete image" class="delete">Delete</a>' : ''?>
+        <?= (isset($this->photos['portrait'])) ? '<img src="/uploads/' . $this->photos['portrait']['file_name'] . '" alt="Portrait" />' : '<img src="/imgages/img-upload-thumb-square.png" alt="Portrait Default" />'?>	
+        <br />
+        <input name="portrait" class="portrait" id="portrait" <?= (isset($this->photos['portrait'])) ? 'disabled = disabled' : ''?> type="file">
+        </span><!--/upload-square -->
         
+         <span class="upload-landscape">
         <label>Landscape Thumbnail (300px by 118px)</label>
-        <?= (isset($this->photos['landscape'])) ? '<a href="/project/removephoto/id/' . $this->photos['landscape']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
-        <?= (isset($this->photos['landscape'])) ? '<img src="/uploads/' . $this->photos['landscape']['file_name'] . '" />' : ''?>
+        <?= (isset($this->photos['landscape'])) ? '<a href="/project/removephoto/id/' . $this->photos['landscape']['id'] . '/project/' . $this->id . '" title="delete image" class="delete">Delete</a>' : ''?>
+        <?= (isset($this->photos['landscape'])) ? '<img src="/uploads/' . $this->photos['landscape']['file_name'] . '" alt="Landscape" />' : '<img src="/images/img-upload-thumb-landscape.png" alt="Landscape Default" />'?>
+        <br />
         <input type="file" name="landscape" class="landscape" id="landscape" <?= (isset($this->photos['landscape'])) ? 'disabled = disabled' : ''?> />
+        </span><!--/upload-landscape -->
 	</fieldset>
+    
+    
+</div> <!--/l-col-upload-->
+
+<span class="r-col-upload">
 
     <fieldset>
-        <legend>Fullscreen Screenshot: (1280px by 800px)</legend>
+        <!--<legend>Fullscreen Screenshot: (1280px by 800px)</legend> -->
+        <br /><br />
+        <span class="upload-full">
+        <label>Screenshot #1</label>   
+        <?= (isset($this->photos['screenshot_1'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_1']['id'] . '/project/' . $this->id . ' title="delete image" class="delete">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_1'])) ? '<img src="/uploads/' . $this->photos['screenshot_1']['file_name'] . '" alt="Screenshot" />' : '<span class="thumb"></span>'?>      
+        <br />
+        <input type="file" name="screenshot_1" class="screenshot_1" id="screenshot_1" <?= (isset($this->photos['screenshot_1'])) ? 'disabled = disabled' : ''?>/>   
+        <!-- <input name="screenshot_1" class="screenshot_1 button" id="screenshot_1" type="file" width="20px" value="" /> -->
+        </span><!--/upload-full -->
         
-        <label>Screenshot #1</label>
-        <?= (isset($this->photos['screenshot_1'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_1']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
-        <?= (isset($this->photos['screenshot_1'])) ? '<img src="/uploads/' . $this->photos['screenshot_1']['file_name'] . '" />' : ''?>
-        <input type="file" name="screenshot_1" class="screenshot_1" id="screenshot_1" <?= (isset($this->photos['screenshot_1'])) ? 'disabled = disabled' : ''?>/>
+        <span class="upload-full">
+        <label>Screenshot #2</label>        
+        <?= (isset($this->photos['screenshot_2'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_2']['id'] . '/project/' . $this->id . ' title="delete image" class="delete">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_2'])) ? '<img src="/uploads/' . $this->photos['screenshot_2']['file_name'] . '" alt="Screenshot" />' : '<span class="thumb"></span>'?>      
+        <br />
+        <input type="file" name="screenshot_2" class="screenshot_2" id="screenshot_2" <?= (isset($this->photos['screenshot_2'])) ? 'disabled = disabled' : ''?>/>  
+        </span><!--/upload-full -->
         
-        <label>Screenshot #2</label>
-        <?= (isset($this->photos['screenshot_2'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_2']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
-        <?= (isset($this->photos['screenshot_2'])) ? '<img src="/uploads/' . $this->photos['screenshot_2']['file_name'] . '" />' : ''?>
-        <input type="file" name="screenshot_2" class="screenshot_2" id="screenshot_2" <?= (isset($this->photos['screenshot_2'])) ? 'disabled = disabled' : ''?>/>
+        <span class="upload-full">
+        <label>Screenshot #3</label>        
+        <?= (isset($this->photos['screenshot_3'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_3']['id'] . '/project/' . $this->id . ' title="delete image" class="delete">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_3'])) ? '<img src="/uploads/' . $this->photos['screenshot_3']['file_name'] . '" alt="Screenshot" />' : '<span class="thumb"></span>'?>      
+        <br />
+        <input type="file" name="screenshot_3" class="screenshot_3" id="screenshot_3" <?= (isset($this->photos['screenshot_3'])) ? 'disabled = disabled' : ''?>/>  
+        </span><!--/upload-full -->
         
-        <label>Screenshot #3</label>
-        <?= (isset($this->photos['screenshot_3'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_3']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
-        <?= (isset($this->photos['screenshot_3'])) ? '<img src="/uploads/' . $this->photos['screenshot_3']['file_name'] . '" />' : ''?>
-        <input type="file" name="screenshot_3" class="screenshot_3" id="screenshot_3" <?= (isset($this->photos['screenshot_3'])) ? 'disabled = disabled' : ''?>/>
+        <span class="upload-full">
+        <label>Screenshot #4</label>        
+        <?= (isset($this->photos['screenshot_4'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_4']['id'] . '/project/' . $this->id . ' title="delete image" class="delete">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_4'])) ? '<img src="/uploads/' . $this->photos['screenshot_4']['file_name'] . '" alt="Screenshot" />' : '<span class="thumb"></span>'?>      
+        <br />
+        <input type="file" name="screenshot_4" class="screenshot_4" id="screenshot_4" <?= (isset($this->photos['screenshot_4'])) ? 'disabled = disabled' : ''?>/>  
+        </span><!--/upload-full -->
         
-        <label>Screenshot #4</label>
-        <?= (isset($this->photos['screenshot_4'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_4']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
-        <?= (isset($this->photos['screenshot_4'])) ? '<img src="/uploads/' . $this->photos['screenshot_4']['file_name'] . '" />' : ''?>
-        <input type="file" name="screenshot_4" class="screenshot_4" id="screenshot_4" <?= (isset($this->photos['screenshot_4'])) ? 'disabled = disabled' : ''?>/>
+        <span class="upload-full">
+        <label>Screenshot #5</label>        
+        <?= (isset($this->photos['screenshot_5'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_5']['id'] . '/project/' . $this->id . ' title="delete image" class="delete">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_5'])) ? '<img src="/uploads/' . $this->photos['screenshot_5']['file_name'] . '" alt="Screenshot" />' : '<span class="thumb"></span>'?>      
+        <br />
+        <input type="file" name="screenshot_5" class="screenshot_5" id="screenshot_5" <?= (isset($this->photos['screenshot_5'])) ? 'disabled = disabled' : ''?>/>  
+        </span><!--/upload-full -->
         
-        <label>Screenshot #5</label>
-        <?= (isset($this->photos['screenshot_5'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_5']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
-        <?= (isset($this->photos['screenshot_5'])) ? '<img src="/uploads/' . $this->photos['screenshot_5']['file_name'] . '" />' : ''?>
-        <input type="file" name="screenshot_5" class="screenshot_5" id="screenshot_5" <?= (isset($this->photos['screenshot_5'])) ? 'disabled = disabled' : ''?>/>
+        <span class="upload-full">
+        <label>Screenshot #6</label>        
+        <?= (isset($this->photos['screenshot_6'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_6']['id'] . '/project/' . $this->id . ' title="delete image" class="delete">Delete</a>' : ''?>
+        <?= (isset($this->photos['screenshot_6'])) ? '<img src="/uploads/' . $this->photos['screenshot_6']['file_name'] . '" alt="Screenshot" />' : '<span class="thumb"></span>'?>      
+        <br />
+        <input type="file" name="screenshot_6" class="screenshot_6" id="screenshot_6" <?= (isset($this->photos['screenshot_6'])) ? 'disabled = disabled' : ''?>/>  
+	</span><!--/upload-full -->
         
-        <label>Screenshot #6</label>
-        <?= (isset($this->photos['screenshot_6'])) ? '<a href="/project/removephoto/id/' . $this->photos['screenshot_6']['id'] . '/project/' . $this->id . '">Delete</a>' : ''?>
-        <?= (isset($this->photos['screenshot_6'])) ? '<img src="/uploads/' . $this->photos['screenshot_6']['file_name'] . '" />' : ''?>
-        <input type="file" name="screenshot_6" class="screenshot_6" id="screenshot_6" <?= (isset($this->photos['screenshot_6'])) ? 'disabled = disabled' : ''?>/>
-	</fieldset>
+    </fieldset>
 
-    <input type="submit" name="submitImageForm" value="submit" id="submitImageForm" class="submitImageForm" />
+</span> <!--/r-col-upload-->
+    <!-- <input type="button" value="+ screenshot" id="addScreenshot" title="add another fullscreen shot" /> -->
+<br />
+    <a class="cancel-lrg back" id="cancel" href="/project/view/id/<?= $this->id ?>">&laquo; back to project</a>
+    <input name="submitImageForm" value="save &raquo;"title="save and continue" id="submitImageForm" class="submitImageForm" type="submit" />
 </form>
+
+</div><!--/entryForm -->
+
+</div><!--/contain all -->
+

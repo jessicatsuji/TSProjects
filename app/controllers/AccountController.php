@@ -56,7 +56,7 @@
 		
 		public function newAction()
 		{
-		
+			$this->view->cssLink = "/css/isaiah.css";
 		}
 		
 		public function createAction()
@@ -101,6 +101,8 @@
 		
 		public function viewAction()
 		{
+			$this->view->cssLink = "/css/isaiah.css";
+			
 			if( $this->session->user_id == "" ) {
 				header( "Location: /" );
 			}

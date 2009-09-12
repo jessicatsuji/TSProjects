@@ -21,6 +21,9 @@
 		
 		public function indexAction()
 		{
+			
+			$this->view->cssLink = "/css/isaiah.css";
+			
 			$all_proj = $this->projects_model->getAll( );
 			
 			foreach( $all_proj as &$proj ) {

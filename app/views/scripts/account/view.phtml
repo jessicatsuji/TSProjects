@@ -5,17 +5,22 @@
 * this will grab their newest 6 projects and display the for all the world to see
 */
 ?>
+
+
+
+<?php if($this->user_id != "") { ?>
+<a class="logout" href="/account/logout">logout</a>
+
+<span class="user"><?= "User: " . $this->first_name . " " . $this->last_name; ?></span>
+<?php 	} ?>
+	
 <h1>This is the user dashboard for <?= $this->first_name . " " . $this->last_name; ?>.</h1>
-<p>What would you like to do? </p>
 
 <div class="options">
-	<a href="/">Go Home</a>
+	<p>What would you like to do? </p>
+	<a class="view" href="/">home</a>
 	
-	<a href="/project/new">Add A New Project</a>
-
-	<a href="/account/logout">Logout</a>
-
-	<span class="user"><?= "User: " . $this->first_name . " " . $this->last_name; ?></span>
+	<a class="newProject" href="/project/new">add new project</a>
 </div>		
 
 <?php

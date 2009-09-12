@@ -1,4 +1,13 @@
-<h1>Are you sure you want to remove this Photo?</h1>
-<img src="/uploads/<?= $this->photo['file_name'] ?>" />
-<a href="/project/deletephoto/id/<?= $this->photo['id'] . '/project/' . $this->id ?>">Yes</a>
-<a href="/project/addphotos/id/<?= $this->id ?>">No</a>
+<div class="contain-all">
+	<span class="aipd"/></span>
+	<h1>Ts Projects</h1>
+	
+	<div class="entryForm">
+		<h2>Are you sure you want to remove this Photo?</h2>
+		<img src="/uploads/<?= $this->photo['file_name'] ?>" />
+		<span class="center-buttons remove">
+			<a class="yes" href="/project/deletephoto/id/<?= $this->photo['id'] . '/project/' . $this->id ?>">Yes</a>
+			<a class="no" href="/project/addphotos/id/<?= $this->id ?>">No</a>
+		</span>
+	</div>
+</div>

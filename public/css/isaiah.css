@@ -1,0 +1,150 @@
+/** CSS for index.html, index_notSignedIn.html, account_new.html, and account_view.html
+* by Isaiah Downing
+*/
+
+.container {
+	width:1020px;
+}
+
+.logout, .user {
+	margin-right: 30px;
+	margin-bottom: 20px;
+	float: right;
+}
+
+.logout {
+	text-decoration: none;
+	border:none;
+	background: transparent url(/images/bg_butn-submit.png) no-repeat;
+	cursor:pointer;
+	color:#00a8ff;
+	display:block;
+	height:35px;
+	width: 82px;
+	text-align: center;
+	padding-top: 8px;
+}
+
+.logout:hover {
+	color: #FFFFFF;
+	background:#4b4d45;
+}
+
+h1 {
+	display: block;
+	clear: both;
+}
+
+.options {
+	margin-left: 10px;
+	margin-top: 30px;
+}
+
+.options p {
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+.options .view, .options .newProject {
+	display:block;
+	clear: both;
+}
+
+.options .view, .options .newProject {
+	text-decoration: none;
+	background-image: url(/images/bg_butn-newAccount.png);
+	background-repeat: no-repeat;
+	text-decoration: none;
+	margin-left: 30px;
+	color:#00a8ff;
+	height:35px;
+	width: 140px;
+	text-align:center;
+	padding-top: 10px;
+	font-size: 12px;
+}
+
+.newProject {
+	margin-top: -10px;
+}
+
+
+.view:hover, .newProject:hover {
+	color: #FFFFFF;
+	background:#4b4d45;
+}
+
+.project {
+	background-color: #949494;
+	width: 200px;
+	height: 185px;
+	margin: 50px;
+	float: left;
+}
+
+.project .thumb {
+	width:100px;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+}
+
+.project h3 {
+	text-align: center;
+	padding:0px;
+	margin-top: -10px;
+}
+
+.project h3 a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.project h3 a:hover {
+	color: #FFFFFF;
+}
+
+.project h4 {
+	text-align: right;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+/* index_notSignedIn.html markup */
+
+.create {
+	display: block;
+	background-image: url(/images/bg_butn-newAccount.png);
+	background-repeat: no-repeat;
+	text-decoration: none;
+	margin-left: 148px;
+	color:#00a8ff;
+	height:35px;
+	width: 140px;
+	text-align:center;
+	padding-top: 10px;
+	font-size: 12px;
+}
+
+.create:hover {
+	background:#4b4d45;
+	color:#fff;
+}
+
+#submit {
+	margin-left: 150px;
+}
+
+.options .descrip {
+	border-top: 1px #7E7E7E solid;
+	font-size: 16px;
+	padding-top: 8px;
+	display: block;	
+	width: 500px;
+	margin-left: 0px;
+}
+
+.options {
+	border-bottom: 1px #7E7E7E solid;
+}
